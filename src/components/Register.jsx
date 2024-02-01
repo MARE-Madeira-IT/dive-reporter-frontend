@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { Button, Checkbox, Form, Input, Row, Col } from "antd";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
+import mapboxgl from "mapbox-gl";
 
 const Container = styled(Row)`
   width: 85%;
@@ -29,15 +30,35 @@ const StyledLink = styled(Link)`
   font-size: 1rem;
 `;
 
+const StyledContainer = styled.div`
+  max-height: "400px";
+`;
+
 const onFinish = (values) => {
   console.log("Received values of form: ", values);
 };
 
 function Register() {
+  mapboxgl.accessToken =
+    "pk.eyJ1IjoidGlnZXJ3aGFsZSIsImEiOiJjanBncmNscnAwMWx3M3ZxdDF2cW8xYWZvIn0.LVgciVtYclOed_hZ9oXY2g";
+
   const [coordinates, setCoordinates] = useState({
+    lng: -16.924326361610536,
     lat: 32.66384984864688,
-    long: -16.924326361610536,
   });
+
+  const mapContainer = useRef(null);
+  const map = useRef(null);
+
+  useEffect(() => {
+    if (map.current) return; // initialize map only once
+    map.current = new mapboxgl.Map({
+      container: mapContainer.current,
+      center: [coordinates.lng, coordinates.lat],
+      zoom: 10,
+    });
+  });
+
   return (
     <Form onFinish={onFinish}>
       <Container gutter={[16, 8]}>
@@ -47,7 +68,6 @@ function Register() {
             <p>Sign up to access your Dive Reporter dashboard.</p>
           </HeaderSection>
         </Col>
-
         <Col xs={24} sm={12}>
           <Form.Item
             label="Email"
@@ -67,7 +87,6 @@ function Register() {
             <Input placeholder="Email" />
           </Form.Item>
         </Col>
-
         <Col xs={24} sm={12}>
           <Form.Item
             label="Username"
@@ -83,7 +102,6 @@ function Register() {
             <Input placeholder="Username" />
           </Form.Item>
         </Col>
-
         <Col xs={24} sm={12}>
           <Form.Item
             label="Password"
@@ -125,8 +143,13 @@ function Register() {
             <Input.Password placeholder="Confirm password" />
           </Form.Item>
         </Col>
-
-        {/* MISSING THE MAP HERE TO SELECT WHERE THE DIVE CENTER IS AT */}
+        <Col xs={24}>
+          <StyledContainer
+            ref={mapContainer}
+            className="map-container"
+            onClick={(e) => console.log(e)}
+          />
+        </Col>
 
         <Col xs={24} sm={12}>
           <Form.Item
@@ -142,7 +165,6 @@ function Register() {
             <Checkbox>I agree with the Terms of Service</Checkbox>
           </Form.Item>
         </Col>
-
         <Col xs={24} sm={12}>
           <Form.Item
             wrapperCol={{
@@ -155,7 +177,6 @@ function Register() {
             </Button>
           </Form.Item>
         </Col>
-
         <Col xs={24} align="middle">
           <StyledLink to={"/login"}>
             Already have an account? <b>Log in!</b>
