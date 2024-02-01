@@ -1,13 +1,12 @@
 import styled from "styled-components";
 import { Button, Checkbox, Form, Input, Row, Col } from "antd";
 import { Link } from "react-router-dom";
-import React, { useRef, useEffect, useState } from "react";
-import mapboxgl from "mapbox-gl";
+import { useEffect, useState } from "react";
+import Map, { Marker } from "react-map-gl";
 
 const Container = styled(Row)`
   width: 85%;
   max-width: 900px;
-  margin: auto;
   box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
   border-radius: 6px;
   padding: 0 50px 50px 50px;
@@ -31,36 +30,31 @@ const StyledLink = styled(Link)`
 `;
 
 const StyledContainer = styled.div`
-  max-height: "400px";
+  height: 400px;
+  padding-bottom: 10px;
 `;
 
-const onFinish = (values) => {
-  console.log("Received values of form: ", values);
-};
-
 function Register() {
-  mapboxgl.accessToken =
-    "pk.eyJ1IjoidGlnZXJ3aGFsZSIsImEiOiJjanBncmNscnAwMWx3M3ZxdDF2cW8xYWZvIn0.LVgciVtYclOed_hZ9oXY2g";
-
   const [coordinates, setCoordinates] = useState({
     lng: -16.924326361610536,
     lat: 32.66384984864688,
   });
 
-  const mapContainer = useRef(null);
-  const map = useRef(null);
+  const onFinish = (formFields) => {
+    formFields.longitude = coordinates.lng;
+    formFields.latitude = coordinates.lat;
+    formFields.userable_type = "UserDiveCenter";
+    console.log("Received values of form: ", formFields);
+  };
 
   useEffect(() => {
-    if (map.current) return; // initialize map only once
-    map.current = new mapboxgl.Map({
-      container: mapContainer.current,
-      center: [coordinates.lng, coordinates.lat],
-      zoom: 10,
-    });
-  });
+    fetch("http://127.0.0.1:8000/api/form/1")
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+  }, []);
 
   return (
-    <Form onFinish={onFinish}>
+    <Form onFinish={onFinish} style={{ margin: "auto" }}>
       <Container gutter={[16, 8]}>
         <Col xs={24} lg={24}>
           <HeaderSection>
@@ -91,7 +85,7 @@ function Register() {
           <Form.Item
             label="Username"
             labelCol={{ span: 24 }}
-            name="username"
+            name="name"
             rules={[
               {
                 required: true,
@@ -144,11 +138,27 @@ function Register() {
           </Form.Item>
         </Col>
         <Col xs={24}>
-          <StyledContainer
-            ref={mapContainer}
-            className="map-container"
-            onClick={(e) => console.log(e)}
-          />
+          <StyledContainer>
+            <Map
+              mapboxAccessToken="pk.eyJ1IjoidGlnZXJ3aGFsZSIsImEiOiJjanBncmNscnAwMWx3M3ZxdDF2cW8xYWZvIn0.LVgciVtYclOed_hZ9oXY2g"
+              initialViewState={{
+                longitude: coordinates.lng,
+                latitude: coordinates.lat,
+                zoom: 11,
+              }}
+              style={{ height: "100%", width: "100%" }}
+              mapStyle="mapbox://styles/tigerwhale/cjpgrt1sccjs92sqjfnuixnxc"
+              onClick={(e) =>
+                setCoordinates({ lat: e.lngLat.lat, lng: e.lngLat.lng })
+              }
+            >
+              <Marker
+                longitude={coordinates.lng}
+                latitude={coordinates.lat}
+                anchor="center"
+              />
+            </Map>
+          </StyledContainer>
         </Col>
 
         <Col xs={24} sm={12}>
@@ -173,7 +183,7 @@ function Register() {
             }}
           >
             <Button type="primary" htmlType="submit">
-              Submit
+              Sign up
             </Button>
           </Form.Item>
         </Col>

@@ -4,15 +4,16 @@ import styled from "styled-components";
 //components
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Homepage from "./components/Homepage";
+import Homepage from "./components/homepage/Homepage";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import Dashboard from "./components/Dashboard";
+import Dashboard from "./components/dashboard/Dashboard";
 import ForgotPassword from "./components/ForgotPassword";
 
 const MainContentContainer = styled.div`
   padding-top: 100px;
   padding-bottom: 100px;
+  margin: auto;
 `;
 
 function App() {
