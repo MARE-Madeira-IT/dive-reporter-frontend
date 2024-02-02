@@ -188,13 +188,8 @@ function Register(props) {
               <Checkbox>I agree with the Terms of Service</Checkbox>
             </Form.Item>
           </Col>
-          <Col xs={24} sm={12}>
-            <Form.Item
-              wrapperCol={{
-                offset: 8,
-                span: 16,
-              }}
-            >
+          <Col xs={24} sm={12} align="end">
+            <Form.Item>
               <Button type="primary" htmlType="submit" loading={loading}>
                 Sign up
               </Button>
