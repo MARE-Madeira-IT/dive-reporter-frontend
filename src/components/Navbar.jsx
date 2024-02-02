@@ -4,6 +4,8 @@ import { Layout, Row, Col, Button, Affix, Drawer, Menu } from "antd";
 import styled from "styled-components";
 import { Fragment } from "react";
 import { MenuOutlined } from "@ant-design/icons";
+import { connect } from "react-redux";
+import { logout } from "../../redux/redux-modules/auth/actions";
 
 const { Header } = Layout;
 
@@ -117,9 +119,9 @@ const navigation = [
   { name: "Participate", link: "#participate" },
 ];
 
-const Navbar = () => {
+const Navbar = (props) => {
+  const { isAuthenticated } = props;
   const [visible, setVisible] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(false);
 
   return (
     <StyledAffix offsetTop={0}>
@@ -143,7 +145,7 @@ const Navbar = () => {
                     </StyledNavBarLink>
                   ))}
                 </Fragment>
-                {loggedIn ? (
+                {isAuthenticated ? (
                   <Fragment>
                     <StyledSpace>|</StyledSpace>
 
@@ -154,8 +156,7 @@ const Navbar = () => {
                       key={"logout"}
                       to=""
                       onClick={() => {
-                        /* logout(); */
-                        console.log("logout");
+                        props.logout();
                       }}
                     >
                       Logout
@@ -192,7 +193,7 @@ const Navbar = () => {
         placement="right"
       >
         <Menu>
-          {loggedIn ? (
+          {isAuthenticated ? (
             <Fragment>
               <Menu.Item key={"dashboard"}>
                 <StyledNavBarLink
@@ -207,8 +208,7 @@ const Navbar = () => {
                 <StyledNavBarLink
                   to=""
                   onClick={() => {
-                    /* logout(); */
-                    console.log("logout");
+                    props.logout();
                   }}
                 >
                   <b>Logout</b>
@@ -240,4 +240,16 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    logout: () => dispatch(logout()),
+  };
+};
+
+const mapStateToProps = (state) => {
+  return {
+    isAuthenticated: state.auth.isAuthenticated,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

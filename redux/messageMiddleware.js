@@ -13,10 +13,10 @@ export default function messageMiddleware() {
      * The error middleware serves to dispatch the initial pending promise to
      * the promise middleware, but adds a `catch`.
      */
-    const { globalError, messageError } = action.meta;
+    /* const { globalError, messageError } = action.meta;
 
     if (globalError) {
-      /*return next(action).catch(error => {
+      return next(action).catch(error => {
         if (messageError) {
           message.error(messageError);
         } else if (error.toString().includes("403")) {
@@ -26,8 +26,8 @@ export default function messageMiddleware() {
         }
 
         throw error;
-      });*/
-    }
+      });
+    } */
 
     return next(action);
   };

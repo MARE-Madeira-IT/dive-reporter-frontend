@@ -2,7 +2,8 @@ import styled from "styled-components";
 import { Button, Form, Input, Row, Col, message } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
-import { createUser } from "../../redux/redux-modules/auth/actions";
+import { login } from "../../redux/redux-modules/auth/actions";
+import { useEffect } from "react";
 
 const Container = styled(Row)`
   width: 85%;
@@ -31,12 +32,25 @@ const StyledLink = styled(Link)`
 `;
 
 function Login(props) {
-  const { loading } = props;
+  const { loading, user } = props;
   const [messageApi, contextHolder] = message.useMessage();
 
   const navigate = useNavigate();
 
-  const onFinish = (formFields) => {};
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
+
+  const onFinish = (formFields) => {
+    props
+      .login(formFields)
+      .then((data) => {
+        navigate("/");
+      })
+      .catch((error) => {
+        message.error(error.response.data.message, 5);
+      });
+  };
   return (
     <Form onFinish={onFinish} style={{ width: "100%" }}>
       {contextHolder}
@@ -102,12 +116,13 @@ function Login(props) {
 const mapStateToProps = (state) => {
   return {
     loading: state.auth.loading,
+    user: state.auth.user,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    createUser: (user) => dispatch(createUser(user)),
+    login: (data) => dispatch(login(data)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
