@@ -190,7 +190,7 @@ function Register(props) {
           </Col>
           <Col xs={24} sm={12} align="end">
             <Form.Item>
-              <Button type="primary" htmlType="submit" loading={loading}>
+              <Button type="primary" htmlType="submit" loading={loading} style={{width: "100%"}}>
                 Sign up
               </Button>
             </Form.Item>
