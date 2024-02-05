@@ -20,6 +20,11 @@ const Container = styled(Row)`
   }
 `;
 
+const MainContentContainer = styled.div`
+  padding-top: 100px;
+  margin: auto;
+`;
+
 const HeaderSection = styled.div`
   padding: 20px;
 
@@ -64,145 +69,155 @@ function Register(props) {
   };
 
   return (
-    <Form onFinish={onFinish} style={{ width: "100%" }}>
-      {contextHolder}
-      <Container>
-        <Col xs={24} lg={24}>
-          <HeaderSection>
-            <h1>Sign up!</h1>
-            <p>Sign up to access your Dive Reporter dashboard.</p>
-          </HeaderSection>
-        </Col>
-        <Row gutter={[16, 8]}>
-          <Col xs={24} sm={12}>
-            <Form.Item
-              label="Email"
-              labelCol={{ span: 24 }}
-              name="email"
-              rules={[
-                {
-                  required: true,
-                  message: "Please input your email!",
-                },
-                {
-                  type: "email",
-                  message: "Please use a valid email!",
-                },
-              ]}
-            >
-              <Input placeholder="Email" />
-            </Form.Item>
+    <MainContentContainer>
+      <Form onFinish={onFinish} style={{ width: "100%" }}>
+        {contextHolder}
+        <Container>
+          <Col xs={24} lg={24}>
+            <HeaderSection>
+              <h1>Sign up!</h1>
+              <p>Sign up to access your Dive Reporter dashboard.</p>
+            </HeaderSection>
           </Col>
-          <Col xs={24} sm={12}>
-            <Form.Item
-              label="Username"
-              labelCol={{ span: 24 }}
-              name="name"
-              rules={[
-                {
-                  required: true,
-                  message: "Please input your username!",
-                },
-              ]}
-            >
-              <Input placeholder="Username" />
-            </Form.Item>
-          </Col>
-          <Col xs={24} sm={12}>
-            <Form.Item
-              label="Password"
-              labelCol={{ span: 24 }}
-              name="password"
-              rules={[
-                {
-                  required: true,
-                  message: "Please input your password!",
-                },
-                { min: 8, message: "Password must have a minimum length of 8" },
-              ]}
-            >
-              <Input.Password placeholder="Password" />
-            </Form.Item>
-          </Col>
-          <Col xs={24} sm={12}>
-            <Form.Item
-              label="Confirm password"
-              labelCol={{ span: 24 }}
-              name="confirmPassword"
-              dependencies={["password"]}
-              rules={[
-                {
-                  required: true,
-                  message: "Please repeat your password!",
-                },
-                ({ getFieldValue }) => ({
-                  validator(_, value) {
-                    if (!value || getFieldValue("password") === value) {
-                      return Promise.resolve();
-                    }
-                    return Promise.reject(
-                      new Error("Your passwords do not match!")
-                    );
+          <Row gutter={[16, 8]}>
+            <Col xs={24} sm={12}>
+              <Form.Item
+                label="Email"
+                labelCol={{ span: 24 }}
+                name="email"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your email!",
                   },
-                }),
-              ]}
-            >
-              <Input.Password placeholder="Confirm password" />
-            </Form.Item>
-          </Col>
-          <Col xs={24}>
-            <StyledContainer>
-              <Map
-                mapboxAccessToken="pk.eyJ1IjoidGlnZXJ3aGFsZSIsImEiOiJjanBncmNscnAwMWx3M3ZxdDF2cW8xYWZvIn0.LVgciVtYclOed_hZ9oXY2g"
-                initialViewState={{
-                  longitude: coordinates.lng,
-                  latitude: coordinates.lat,
-                  zoom: 11,
-                }}
-                style={{ height: "100%", width: "100%" }}
-                mapStyle="mapbox://styles/tigerwhale/cjpgrt1sccjs92sqjfnuixnxc"
-                onClick={(e) =>
-                  setCoordinates({ lat: e.lngLat.lat, lng: e.lngLat.lng })
-                }
+                  {
+                    type: "email",
+                    message: "Please use a valid email!",
+                  },
+                ]}
               >
-                <Marker
-                  longitude={coordinates.lng}
-                  latitude={coordinates.lat}
-                  anchor="center"
-                />
-              </Map>
-            </StyledContainer>
-          </Col>
+                <Input placeholder="Email" />
+              </Form.Item>
+            </Col>
+            <Col xs={24} sm={12}>
+              <Form.Item
+                label="Username"
+                labelCol={{ span: 24 }}
+                name="name"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your username!",
+                  },
+                ]}
+              >
+                <Input placeholder="Username" />
+              </Form.Item>
+            </Col>
+            <Col xs={24} sm={12}>
+              <Form.Item
+                label="Password"
+                labelCol={{ span: 24 }}
+                name="password"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your password!",
+                  },
+                  {
+                    min: 8,
+                    message: "Password must have a minimum length of 8",
+                  },
+                ]}
+              >
+                <Input.Password placeholder="Password" />
+              </Form.Item>
+            </Col>
+            <Col xs={24} sm={12}>
+              <Form.Item
+                label="Confirm password"
+                labelCol={{ span: 24 }}
+                name="confirmPassword"
+                dependencies={["password"]}
+                rules={[
+                  {
+                    required: true,
+                    message: "Please repeat your password!",
+                  },
+                  ({ getFieldValue }) => ({
+                    validator(_, value) {
+                      if (!value || getFieldValue("password") === value) {
+                        return Promise.resolve();
+                      }
+                      return Promise.reject(
+                        new Error("Your passwords do not match!")
+                      );
+                    },
+                  }),
+                ]}
+              >
+                <Input.Password placeholder="Confirm password" />
+              </Form.Item>
+            </Col>
+            <Col xs={24}>
+              <StyledContainer>
+                <Map
+                  mapboxAccessToken="pk.eyJ1IjoidGlnZXJ3aGFsZSIsImEiOiJjanBncmNscnAwMWx3M3ZxdDF2cW8xYWZvIn0.LVgciVtYclOed_hZ9oXY2g"
+                  initialViewState={{
+                    longitude: coordinates.lng,
+                    latitude: coordinates.lat,
+                    zoom: 11,
+                  }}
+                  style={{ height: "100%", width: "100%" }}
+                  mapStyle="mapbox://styles/tigerwhale/cjpgrt1sccjs92sqjfnuixnxc"
+                  onClick={(e) =>
+                    setCoordinates({ lat: e.lngLat.lat, lng: e.lngLat.lng })
+                  }
+                >
+                  <Marker
+                    longitude={coordinates.lng}
+                    latitude={coordinates.lat}
+                    anchor="center"
+                  />
+                </Map>
+              </StyledContainer>
+            </Col>
 
-          <Col xs={24} sm={12}>
-            <Form.Item
-              name="acceptTerms"
-              valuePropName="checked"
-              rules={[
-                {
-                  required: true,
-                  message: "Please accept the terms of service!",
-                },
-              ]}
-            >
-              <Checkbox>I agree with the Terms of Service</Checkbox>
-            </Form.Item>
-          </Col>
-          <Col xs={24} sm={12} align="end">
-            <Form.Item>
-              <Button type="primary" htmlType="submit" loading={loading} style={{width: "100%"}}>
-                Sign up
-              </Button>
-            </Form.Item>
-          </Col>
-          <Col xs={24} align="middle">
-            <StyledLink to={"/login"}>
-              Already have an account? <b>Log in!</b>
-            </StyledLink>
-          </Col>
-        </Row>
-      </Container>
-    </Form>
+            <Col xs={24} sm={12}>
+              <Form.Item
+                name="acceptTerms"
+                valuePropName="checked"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please accept the terms of service!",
+                  },
+                ]}
+              >
+                <Checkbox>I agree with the Terms of Service</Checkbox>
+              </Form.Item>
+            </Col>
+            <Col xs={24} sm={12} align="end">
+              <Form.Item>
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  loading={loading}
+                  style={{ width: "100%" }}
+                >
+                  Sign up
+                </Button>
+              </Form.Item>
+            </Col>
+            <Col xs={24} align="middle">
+              <StyledLink to={"/login"}>
+                Already have an account? <b>Log in!</b>
+              </StyledLink>
+            </Col>
+          </Row>
+        </Container>
+      </Form>
+    </MainContentContainer>
   );
 }
 

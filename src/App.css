@@ -1,4 +1,13 @@
 .app {
+  width: 100%;
+  height: auto;
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.mainContent {
   width: 80%;
   max-width: 1500px;
   height: auto;
@@ -12,10 +21,14 @@ body {
   padding: 0;
   margin: 0;
   background-color: #fbfbfb;
+  overflow-x: hidden;
 }
 
 @media only screen and (max-width: 1100px) {
   .app {
+    width: 97%;
+  }
+  .mainContent {
     width: 97%;
   }
 }

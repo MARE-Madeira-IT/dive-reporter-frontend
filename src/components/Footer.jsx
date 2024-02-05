@@ -33,6 +33,11 @@ const Logo = styled(Link)`
   }
 `;
 
+const MainContentContainer = styled.div`
+  padding-top: 100px;
+  margin: auto;
+`;
+
 const StyledDescription = styled.div`
   font-size: 0.8rem;
   color: #777777;
@@ -63,7 +68,7 @@ const logoPaths = [
 
 function Footer() {
   return (
-    <>
+    <MainContentContainer>
       <Divider style={{ borderTop: "1px solid grey" }} />
 
       <Row gutter={[16, 16]} justify={"space-between"} align={"middle"}>
@@ -110,7 +115,7 @@ function Footer() {
           <LinkedinOutlined />
         </StyledLink>
       </Row>
-    </>
+    </MainContentContainer>
   );
 }
 

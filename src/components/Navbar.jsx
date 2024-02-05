@@ -112,6 +112,12 @@ const StyledSpace = styled.div`
   padding: 10px;
 `;
 
+const NavContainer = styled(Row)`
+  width: 100%;
+  max-width: 1500px;
+  margin: auto;
+`;
+
 const navigation = [
   { name: "Home", link: "#home" },
   { name: "Application", link: "#application" },
@@ -126,7 +132,7 @@ const Navbar = (props) => {
   return (
     <StyledAffix offsetTop={0}>
       <StyledHeader style={{ borderBottom: "1px solid rgb(255, 254, 252)" }}>
-        <Row align={"middle"}>
+        <NavContainer align={"middle"}>
           <Col xs={20} lg={4}>
             <Logo to="/">
               <img src="/src/assets/logoName.png" />
@@ -187,7 +193,7 @@ const Navbar = (props) => {
               </Row>
             </StyledResponsive>
           </Col>
-        </Row>
+        </NavContainer>
       </StyledHeader>
       <DrawerNavbar
         open={visible}
