@@ -156,7 +156,9 @@ const Navbar = (props) => {
                       key={"logout"}
                       to=""
                       onClick={() => {
-                        props.logout();
+                        props.logout().then((data) => {
+                          console.log("logged out success");
+                        });
                       }}
                     >
                       Logout

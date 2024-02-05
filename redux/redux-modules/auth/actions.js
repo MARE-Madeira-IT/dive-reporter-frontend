@@ -10,10 +10,21 @@ export const createUser = (data) => ({
   payload: api.createUser(data),
 });
 
-export const login = (data) => ({
-  type: types.LOGIN,
-  payload: api.login(data),
-});
+export const login = (data) => {
+  return (dispatch) => {
+    return axios
+      .post(`${url}/login`, data)
+      .then((res) => {
+        const token = res.data.data.access_token;
+        localStorage.setItem("token", token);
+        setAuthorizationToken(token);
+        dispatch(loginSuccess(jwtDecode(token)));
+      })
+      .catch((err) => {
+        resetToken();
+      });
+  };
+};
 
 export const me = () => ({
   type: types.ME,
@@ -27,11 +38,11 @@ export function loginSuccess(token) {
   };
 }
 
-export const logout = (data) => {
+export const logout = () => {
   return (dispatch) => {
     const response = dispatch({
       type: types.LOGOUT,
-      payload: axios.post(`${url}/logout`, data),
+      payload: axios.post(`${url}/logout`),
     });
     response.then((res) => {
       resetToken();
