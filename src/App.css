@@ -4,7 +4,7 @@
   display: flex;
   margin: auto;
   flex-direction: column;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Arial", Helvetica, sans-serif !important;
 }
 
 .mainContent {
@@ -14,7 +14,6 @@
   display: flex;
   margin: auto;
   flex-direction: column;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
