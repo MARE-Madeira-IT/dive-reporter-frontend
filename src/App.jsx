@@ -10,20 +10,16 @@ import Register from "./components/Register";
 import Dashboard from "./components/dashboard/Dashboard";
 import ForgotPassword from "./components/ForgotPassword";
 
-const MainContentContainer = styled.div`
-  padding-top: 100px;
-  padding-bottom: 100px;
-  margin: auto;
-`;
-
 function App() {
   return (
     <div className="app">
       <BrowserRouter>
         <Navbar />
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+        </Routes>
         <div className="mainContent">
           <Routes>
-            <Route path="/" element={<Homepage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/dashboard" element={<Dashboard />} />

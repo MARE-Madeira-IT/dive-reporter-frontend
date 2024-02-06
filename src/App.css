@@ -1,19 +1,21 @@
 .app {
-  width: 100%;
+  width: 100vw;
   height: auto;
   display: flex;
   margin: auto;
   flex-direction: column;
   font-family: "Arial", Helvetica, sans-serif !important;
+  overflow-x: hidden;
 }
 
 .mainContent {
-  width: 80%;
+  width: 80vw;
   max-width: 1500px;
   height: auto;
   display: flex;
   margin: auto;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
 body {
@@ -21,12 +23,10 @@ body {
   margin: 0;
   background-color: #fbfbfb;
   overflow-x: hidden;
+  width: 100vw;
 }
 
 @media only screen and (max-width: 1100px) {
-  .app {
-    width: 97%;
-  }
   .mainContent {
     width: 97%;
   }

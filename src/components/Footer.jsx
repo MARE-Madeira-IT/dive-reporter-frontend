@@ -75,7 +75,7 @@ function Footer() {
         {logoPaths.map((element, index) => (
           <Col key={index} lg={2} md={2} sm={3} xs={4}>
             <Logo>
-              <img src={`/src/assets/${element}.png`} />
+              <img src={`/src/assets/logos/${element}.png`} />
             </Logo>
           </Col>
         ))}

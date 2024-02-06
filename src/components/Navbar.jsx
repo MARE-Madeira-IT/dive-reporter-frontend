@@ -135,7 +135,7 @@ const Navbar = (props) => {
         <NavContainer align={"middle"}>
           <Col xs={20} lg={4}>
             <Logo to="/">
-              <img src="/src/assets/logoName.png" />
+              <img src="/src/assets/logos/logoName.png" />
             </Logo>
           </Col>
           <Col xs={4} lg={20}>

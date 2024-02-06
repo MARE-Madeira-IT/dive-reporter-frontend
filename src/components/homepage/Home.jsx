@@ -1,18 +1,36 @@
 import styled from "styled-components";
-import { Row, Col } from "antd";
+import { useEffect, useState } from "react";
 
 const Container = styled.div`
-  width: 125vw;
-  margin-left: -21vw;
+  width: 100vw;
   overflow: hidden;
   max-height: 100vh;
   display: grid;
-  /* Media query for mobile device size */
+
+  @media only screen and (max-width: 600px) {
+    height: 100vh;
+    max-width: 100vw;
+    width: auto;
+  }
+  /* Media query for mobile device size*/
+`;
+
+const BackgroundImage = styled.img`
+  width: 150vw;
+  height: auto;
+  grid-area: 1 / 1 / 1 / 4;
+
+  @media only screen and (max-width: 600px) {
+    height: 100vh;
+    width: auto;
+  }
 `;
 
 const TextContainer = styled.div`
   grid-area: 1 / 1 / 1 / 4;
   width: 100vw;
+  text-align: center;
+  padding-top: 10%;
 
   h1 {
     font-size: 5rem;
@@ -29,26 +47,33 @@ const TextContainer = styled.div`
   /* Media query for mobile device size */
 `;
 
-const BackgroundImage = styled.img`
-  width: 100%;
-  height: auto;
-  grid-area: 1 / 1 / 1 / 4;
-  /* Media query for mobile device size */
-`;
-
 function Home() {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  });
+
   return (
     <Container>
-      <BackgroundImage src="https://i.redd.it/nhk8jg3psng71.jpg" />
+      <BackgroundImage
+        src={
+          windowWidth > 600
+            ? "/../src/assets/teste.jpg"
+            : "/../src/assets/testerotate.jpg"
+        }
+      />
       <TextContainer>
-        <Row justify={"center"}>
-          <Col xs={24} align="middle">
-            <h1>Dive Reporter</h1>
-          </Col>
-          <Col xs={24} align="middle">
-            <p>A low cost, long term monitoring program</p>
-          </Col>
-        </Row>
+        <h1>Dive Reporter</h1>
+        <p>A low-cost long-term monitoring program</p>
       </TextContainer>
     </Container>
   );
