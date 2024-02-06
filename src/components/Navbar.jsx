@@ -145,7 +145,10 @@ const Navbar = (props) => {
                   {navigation.map((element) => (
                     <StyledNavBarLink
                       key={element.name}
-                      to={`/${element.link}`}
+                      to={{
+                        pathname: "/",
+                        hash: `${element.link}`,
+                      }}
                     >
                       {element.name}
                     </StyledNavBarLink>

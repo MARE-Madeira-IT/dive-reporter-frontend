@@ -18,6 +18,10 @@ const Container = styled.div`
 const BackgroundImage = styled.img`
   width: 150vw;
   height: auto;
+
+  /* height: 100vh;
+  width: auto; */
+
   grid-area: 1 / 1 / 1 / 4;
 
   @media only screen and (max-width: 600px) {
