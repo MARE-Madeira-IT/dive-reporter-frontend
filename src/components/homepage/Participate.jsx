@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Button, Form, Input, Row, Col, message } from "antd";
 import { connect } from "react-redux";
+import { createContact } from "../../../redux/redux-modules/contact/actions";
 
 const Container = styled(Row)`
   width: 85%;
@@ -35,7 +36,17 @@ function Participate(props) {
   const [messageApi, contextHolder] = message.useMessage();
 
   const onFinish = (formFields) => {
+    formFields.section = "contact";
+    formFields.subject = "Dive Reporter";
     console.log(formFields);
+    props
+      .createContact(formFields)
+      .then((data) => {
+        message.success(data.value.data.message, 5);
+      })
+      .catch((error) => {
+        message.error(error.response.data.message);
+      });
   };
 
   return (
@@ -128,13 +139,13 @@ function Participate(props) {
 
 const mapStateToProps = (state) => {
   return {
-    loading: state.auth.loading,
+    loading: state.contact.loading,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    /* login: (data) => dispatch(login(data)), */
+    createContact: (data) => dispatch(createContact(data)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Participate);
