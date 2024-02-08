@@ -66,7 +66,7 @@ const logoPaths = [
   "logoPlasmar",
 ];
 
-function Footer() {
+function FooterContent() {
   return (
     <MainContentContainer>
       <Divider style={{ borderTop: "1px solid grey" }} />
@@ -119,4 +119,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default FooterContent;

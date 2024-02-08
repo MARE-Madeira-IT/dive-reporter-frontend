@@ -1,22 +1,22 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 //components
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import Homepage from "./components/Homepage";
-import Login from "./components/Login";
-import Register from "./components/Register";
-import Dashboard from "./components/dashboard/Dashboard";
-import ForgotPassword from "./components/ForgotPassword";
+import NavbarContent from "./components/NavbarContent";
+import FooterContent from "./components/FooterContent";
+import HomepageContent from "./components/HomepageContent";
+import LoginContent from "./components/LoginContent";
+import RegisterContent from "./components/RegisterContent";
+import DashboardContent from "./components/DashboardContent";
+import ForgotPasswordContent from "./components/ForgotPasswordContent";
 import PrivateRoute from "./components/helpers/PrivateRoute";
 
 function App() {
   return (
     <div className="app">
       <BrowserRouter>
-        <Navbar />
+        <NavbarContent />
         <Routes>
-          <Route path="/" element={<Homepage />} />
+          <Route path="/" element={<HomepageContent />} />
         </Routes>
         <div className="mainContent">
           <Routes>
@@ -24,15 +24,15 @@ function App() {
               path="/dashboard"
               element={
                 <PrivateRoute>
-                  <Dashboard />
+                  <DashboardContent />
                 </PrivateRoute>
               }
             />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/login" element={<LoginContent />} />
+            <Route path="/register" element={<RegisterContent />} />
+            <Route path="/forgot-password" element={<ForgotPasswordContent />} />
           </Routes>
-          <Footer />
+          <FooterContent />
         </div>
       </BrowserRouter>
     </div>

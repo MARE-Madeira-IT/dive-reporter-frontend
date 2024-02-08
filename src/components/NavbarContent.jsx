@@ -125,7 +125,7 @@ const navigation = [
   { name: "Participate", link: "#participate" },
 ];
 
-const Navbar = (props) => {
+const NavbarContent = (props) => {
   const { isAuthenticated } = props;
   const [visible, setVisible] = useState(false);
 
@@ -263,4 +263,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
+export default connect(mapStateToProps, mapDispatchToProps)(NavbarContent);

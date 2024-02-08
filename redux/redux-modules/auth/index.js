@@ -2,7 +2,7 @@ import { types } from "./types";
 
 const initialState = {
   data: [], //
-  isAuthenticated: true,
+  isAuthenticated: false,
   loading: false,
   currentUser: {},
 };

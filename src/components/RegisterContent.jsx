@@ -43,7 +43,7 @@ const StyledContainer = styled.div`
   padding-bottom: 10px;
 `;
 
-function Register(props) {
+function RegisterContent(props) {
   const { loading } = props;
   const [messageApi, contextHolder] = message.useMessage();
   const [coordinates, setCoordinates] = useState({
@@ -232,4 +232,4 @@ const mapDispatchToProps = (dispatch) => {
     createUser: (user) => dispatch(createUser(user)),
   };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(Register);
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterContent);

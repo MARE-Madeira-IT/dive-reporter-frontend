@@ -20,7 +20,7 @@ const Container = styled(Row)`
   }
 `;
 
-function Homepage() {
+function HomepageContent() {
   return (
     <>
       <HomeContainer>
@@ -43,4 +43,4 @@ function Homepage() {
   );
 }
 
-export default Homepage;
+export default HomepageContent;
