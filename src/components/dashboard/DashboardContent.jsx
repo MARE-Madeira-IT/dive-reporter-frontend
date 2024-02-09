@@ -1,7 +1,7 @@
-import Ranking from "./dashboard/Ranking";
-import ReportsStats from "./dashboard/ReportsStats";
-import Reports from "./dashboard/Reports";
-import DivingSpots from "./dashboard/DivingSpots";
+import Ranking from "./Ranking";
+import ReportsStatsContent from "./ReportsStats/ReportsStatsContent";
+import Reports from "./Reports";
+import DivingSpotsContent from "./DivingSpots/DivingSpotsContent";
 import { Row, Col } from "antd";
 
 function DashboardContent() {
@@ -11,13 +11,13 @@ function DashboardContent() {
         <Ranking />
       </Col>
       <Col xs={24}>
-        <ReportsStats />
+        <ReportsStatsContent />
       </Col>
       <Col xs={24}>
         <Reports />
       </Col>
       <Col xs={24}>
-        <DivingSpots />
+        <DivingSpotsContent />
       </Col>
     </Row>
   );

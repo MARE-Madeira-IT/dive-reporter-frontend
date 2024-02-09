@@ -18,7 +18,7 @@ export const login = (data) => {
         const token = res.data.data.access_token;
         localStorage.setItem("token", token);
         setAuthorizationToken(token);
-        dispatch(loginSuccess(jwtDecode(token)));
+        dispatch(loginSuccess(jwtDecode(token), res.data.user));
       })
       .catch((err) => {
         resetToken();
@@ -31,10 +31,11 @@ export const me = () => ({
   payload: axios.get(`${url}/me`),
 });
 
-export function loginSuccess(token) {
+export function loginSuccess(token, user) {
   return {
     type: types.LOGIN_SUCCESS,
     payload: token,
+    user: user,
   };
 }
 

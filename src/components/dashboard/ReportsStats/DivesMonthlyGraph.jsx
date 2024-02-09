@@ -77,8 +77,6 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
   return {
     data: state.dive.monthlyData,
-    meta: state.dive.meta,
-    loading: state.dive.loading,
   };
 };
 

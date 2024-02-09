@@ -6,3 +6,9 @@ export const fetchMonthlyDives = () => ({
   payload: api.fetchMonthlyDives(),
   meta: { globalError: true },
 });
+
+export const fetchMostReportedSpecies = () => ({
+  type: types.FETCH_MOST_REPORTED_SPECIES,
+  payload: api.fetchMostReportedSpecies(),
+  meta: { globalError: true },
+});

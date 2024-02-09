@@ -6,7 +6,7 @@ import FooterContent from "./components/FooterContent";
 import HomepageContent from "./components/HomepageContent";
 import LoginContent from "./components/LoginContent";
 import RegisterContent from "./components/RegisterContent";
-import DashboardContent from "./components/DashboardContent";
+import DashboardContent from "./components/dashboard/DashboardContent";
 import ForgotPasswordContent from "./components/ForgotPasswordContent";
 import PrivateRoute from "./components/helpers/PrivateRoute";
 
@@ -30,7 +30,10 @@ function App() {
             />
             <Route path="/login" element={<LoginContent />} />
             <Route path="/register" element={<RegisterContent />} />
-            <Route path="/forgot-password" element={<ForgotPasswordContent />} />
+            <Route
+              path="/forgot-password"
+              element={<ForgotPasswordContent />}
+            />
           </Routes>
           <FooterContent />
         </div>

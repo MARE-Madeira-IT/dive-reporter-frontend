@@ -4,7 +4,7 @@ const initialState = {
   data: [], //
   isAuthenticated: false,
   loading: false,
-  currentUser: {},
+  user: null,
 };
 
 export default (state = initialState, action = {}) => {
@@ -40,7 +40,7 @@ export default (state = initialState, action = {}) => {
         ...state,
         loading: false,
         isAuthenticated: true,
-        currentUser: action.payload.data,
+        user: action.payload,
       };
 
     case `${types.LOGOUT}_FULFILLED`:
@@ -48,13 +48,14 @@ export default (state = initialState, action = {}) => {
         ...state,
         loading: false,
         isAuthenticated: false,
-        currentUser: {},
+        user: null,
       };
     case `${types.LOGIN_SUCCESS}`:
       return {
         ...state,
         loading: false,
         isAuthenticated: true,
+        user: action.user,
       };
 
     default:

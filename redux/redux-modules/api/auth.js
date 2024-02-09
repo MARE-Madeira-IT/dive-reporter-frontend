@@ -1,5 +1,4 @@
 import axios from "axios";
-/* import { stringify } from "query-string"; */
 
 const url = `http://localhost:8000/api`;
 
