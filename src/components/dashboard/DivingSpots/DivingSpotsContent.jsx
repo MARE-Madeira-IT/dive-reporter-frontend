@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import { fetchSelector } from "../../../../redux/redux-modules/divingSpots/actions";
 import DivingSpotsTableContainer from "./DivingSpotsTableContainer";
 import DivingSpotMapList from "./DivingSpotMapList";
+import DivingSpotFilters from "./DivingSpotFilters";
+import DivingSpotModalContainer from "./DivingSpotModalContainer";
 
 const StyledTitle = styled.div`
   font-size: 2rem;
@@ -13,11 +15,9 @@ const StyledTitle = styled.div`
 function DivingSpotsContent(props) {
   const { data, user } = props;
   const [filters, setFilters] = useState({ validated: 1 });
-  const [mapBounds, setMapBounds] = useState(null);
   const [associatedData, setAssociatedData] = useState(data);
   const [notAssociatedData, setNotAssociatedData] = useState(data);
   const [creating, setCreating] = useState(null);
-  const [editing, setEditing] = useState(null);
 
   useEffect(() => {
     props.fetchSelector(filters);
@@ -56,42 +56,40 @@ function DivingSpotsContent(props) {
         </Divider>
       </Row>
 
-      {/*  <DivingSpotModalContainer
-        creating={creating}
-        editing={editing}
-        setCreating={setCreating}
-        setEditing={setEditing}
-      /> */}
+      <DivingSpotModalContainer creating={creating} setCreating={setCreating} />
       {/* TODO: DIVING SPOT MODAL CONTAINER FOR WHEN ITS NEEDED TO CREATE A NEW DIVING SPOT */}
 
       <Row type="flex" gutter={24}>
         <Col xs={24}>
-          <p>TODO: FILTERS COMPONENT</p>
+          <DivingSpotFilters
+            setFilters={setFilters}
+            filters={filters}
+            setCreating={setCreating}
+          />
         </Col>
+
         <Col xs={24}>
           <DivingSpotMapList data={data} user={user} filters={filters} />
         </Col>
 
         <Col xs={24} lg={12}>
           <DivingSpotsTableContainer
-            mapbounds={mapBounds}
             filters={filters}
             data={associatedData}
             title={"Associated dive spots"}
             color={"#f7f7f7"}
-            setEditing={setEditing}
+            
             setCreating={setCreating}
           />
         </Col>
 
         <Col xs={24} lg={12}>
           <DivingSpotsTableContainer
-            mapbounds={mapBounds}
             filters={filters}
             data={notAssociatedData}
             title={"Not associated dive spots"}
             color={"#000000"}
-            setEditing={setEditing}
+            
             setCreating={setCreating}
           />
         </Col>

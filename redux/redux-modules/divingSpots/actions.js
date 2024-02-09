@@ -24,3 +24,9 @@ export const removeFromUser = (data) => ({
   payload: api.removeFromUser(data),
   meta: { globalError: true },
 });
+
+export const fetchSubstrates = () => ({
+  type: types.FETCH_DIVING_SPOT_SUBSTRATES,
+  payload: api.fetchSubstrates(),
+  meta: { globalError: true },
+});

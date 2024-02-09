@@ -37,8 +37,7 @@ function DivingSpotsTableContainer(props) {
     user,
     filters,
     title,
-    /* setEditing,
-    setCreating, */
+    /* setCreating, */
   } = props;
   const [drawerContent, setDrawerContent] = useState(null);
   const [coordinates, setCoordinates] = useState(null);

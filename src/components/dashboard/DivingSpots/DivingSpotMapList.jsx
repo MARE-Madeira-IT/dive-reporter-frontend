@@ -7,7 +7,6 @@ import {
   fetchSelector,
   removeFromUser,
 } from "../../../../redux/redux-modules/divingSpots/actions";
-import DivingSpotPopUp from "./DivingSpotPopUp";
 
 const MapContainer = styled.div`
   width: 100%;

@@ -11,7 +11,7 @@ function ReportsStatsContent() {
   return (
     <Row gutter={16} justify={"center"} align={"middle"}>
       <Col xs={24}>
-        <Divider>
+        <Divider orientation="left">
           <StyledTitle>My Dives</StyledTitle>
         </Divider>
       </Col>

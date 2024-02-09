@@ -5,6 +5,7 @@ const initialState = {
   DivingSpotSelector: [],
   meta: {}, //meta information about DivingSpots and pagination
   loading: false,
+  substrates: [],
 };
 
 export default (state = initialState, action = {}) => {
@@ -13,6 +14,7 @@ export default (state = initialState, action = {}) => {
     case `${types.ADD_TO_USER}_PENDING`:
     case `${types.REMOVE_FROM_USER}_PENDING`:
     case `${types.CREATE_DIVING_SPOT}_PENDING`:
+    case `${types.FETCH_DIVING_SPOT_SUBSTRATES}_PENDING`:
       return {
         ...state,
         loading: true,
@@ -22,6 +24,7 @@ export default (state = initialState, action = {}) => {
     case `${types.ADD_TO_USER}_REJECTED`:
     case `${types.REMOVE_FROM_USER}_REJECTED`:
     case `${types.CREATE_DIVING_SPOT}_REJECTED`:
+    case `${types.FETCH_DIVING_SPOT_SUBSTRATES}_REJECTED`:
       return {
         ...state,
         loading: false,
@@ -50,6 +53,12 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         data: [action.payload.data.data, ...state.data],
+      };
+    case `${types.FETCH_DIVING_SPOT_SUBSTRATES}_FULFILLED`:
+      return {
+        ...state,
+        loading: false,
+        substrates: action.payload.data.data,
       };
 
     default:

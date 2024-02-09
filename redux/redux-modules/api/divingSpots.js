@@ -17,11 +17,15 @@ const addToUser = (data) => axios.post(`${url}/diving-spot-user/${data}`);
 const removeFromUser = (data) =>
   axios.post(`${url}/remove-diving-spot-user`, data);
 
+const fetchSubstrates = () =>
+  axios.get(`${url}/selector/diving-spot-substract`);
+
 const api = {
   fetchSelector,
   createDivingSpot,
   addToUser,
   removeFromUser,
+  fetchSubstrates,
 };
 
 export default api;
