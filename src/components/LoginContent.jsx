@@ -42,10 +42,6 @@ function Login(props) {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
-
   const onFinish = (formFields) => {
     props
       .login(formFields)

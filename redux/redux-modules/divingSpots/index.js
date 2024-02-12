@@ -52,7 +52,7 @@ export default (state = initialState, action = {}) => {
     case `${types.CREATE_DIVING_SPOT}_FULFILLED`:
       return {
         ...state,
-        data: [action.payload.data.data, ...state.data],
+        loading: false,
       };
     case `${types.FETCH_DIVING_SPOT_SUBSTRATES}_FULFILLED`:
       return {

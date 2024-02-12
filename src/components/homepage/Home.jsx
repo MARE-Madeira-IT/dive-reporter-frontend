@@ -71,8 +71,8 @@ function Home() {
       <BackgroundImage
         src={
           windowWidth > 600
-            ? "/../src/assets/teste.jpg"
-            : "/../src/assets/testerotate.jpg"
+            ? "/../src/assets/landing16_9.png"
+            : "/../src/assets/landing9_16.png"
         }
       />
       <TextContainer>
