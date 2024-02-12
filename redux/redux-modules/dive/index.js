@@ -4,17 +4,16 @@ const initialState = {
   data: [], //Dive list
   monthlyData: [],
   mostReportedData: [],
-  speciesReportsData: [],
+  rankingDivesData: [],
   meta: {}, //meta information about Dive and pagination
   loading: false,
-  coordinates: [],
-  loadingCoordinates: false,
 };
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
     case `${types.FETCH_MONTHLY_DIVE}_PENDING`:
     case `${types.FETCH_MOST_REPORTED_SPECIES}_PENDING`:
+    case `${types.FETCH_RANKING_DIVES}_PENDING`:
       return {
         ...state,
         loading: true,
@@ -22,6 +21,7 @@ export default (state = initialState, action = {}) => {
 
     case `${types.FETCH_MONTHLY_DIVE}_REJECTED`:
     case `${types.FETCH_MOST_REPORTED_SPECIES}_REJECTED`:
+    case `${types.FETCH_RANKING_DIVES}_REJECTED`:
       return {
         ...state,
         loading: false,
@@ -38,6 +38,12 @@ export default (state = initialState, action = {}) => {
         ...state,
         loading: false,
         mostReportedData: action.payload.data,
+      };
+    case `${types.FETCH_RANKING_DIVES}_FULFILLED`:
+      return {
+        ...state,
+        loading: false,
+        rankingDivesData: action.payload.data,
       };
 
     default:

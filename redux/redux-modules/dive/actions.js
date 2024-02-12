@@ -12,3 +12,9 @@ export const fetchMostReportedSpecies = () => ({
   payload: api.fetchMostReportedSpecies(),
   meta: { globalError: true },
 });
+
+export const fetchRankingDives = () => ({
+  type: types.FETCH_RANKING_DIVES,
+  payload: api.fetchRankingDives(),
+  meta: { globalError: true },
+});
