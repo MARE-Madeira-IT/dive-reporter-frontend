@@ -35,6 +35,8 @@ const Logo = styled(Link)`
 
 const MainContentContainer = styled.div`
   padding-top: 100px;
+  width: 90%;
+  max-width: 1500px;
   margin: auto;
 `;
 

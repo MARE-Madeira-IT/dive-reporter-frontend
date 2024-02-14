@@ -16,7 +16,7 @@ const Container = styled.div`
 `;
 
 const BackgroundImage = styled.img`
-  width: 150vw;
+  width: 100vw;
   height: auto;
 
   /* height: 100vh;
@@ -40,15 +40,15 @@ const TextContainer = styled.div`
     font-size: 5rem;
     color: white;
     line-height: 1;
+    width: 95%;
   }
 
   p {
     font-size: 2rem;
     color: white;
     line-height: 1;
+    width: 95%;
   }
-
-  /* Media query for mobile device size */
 `;
 
 function Home() {

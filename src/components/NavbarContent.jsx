@@ -18,7 +18,8 @@ const StyledAffix = styled(Affix)`
 const StyledHeader = styled(Header)`
   background: rgb(255, 254, 252) !important;
   padding: 0 !important;
-  transition: 0.5s ease;
+  margin: 0;
+  /* transition: 0.5s ease; */
 `;
 
 const Logo = styled(Link)`
@@ -113,7 +114,7 @@ const StyledSpace = styled.div`
 `;
 
 const NavContainer = styled(Row)`
-  width: 100%;
+  width: 90%;
   max-width: 1500px;
   margin: auto;
 `;
