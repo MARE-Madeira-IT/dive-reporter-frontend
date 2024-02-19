@@ -17,6 +17,7 @@ const TablePagination = ({
   onRow,
   showSizeChanger = false,
   showQuickJumper = true,
+  pageSize,
 }) => {
   // PAGINATION OPTIONS
   const pagination = {
@@ -24,7 +25,7 @@ const TablePagination = ({
     showQuickJumper: showQuickJumper,
     showTotal: (total, range) => `${range[0]} to ${range[1]} of ${total}`,
     color: "#f7f7f7",
-    pageSize: data.length,
+    pageSize: pageSize,
   };
   return (
     <StyledTable

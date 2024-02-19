@@ -1,9 +1,251 @@
-import React from 'react'
+import { Drawer, Select, Spin } from "antd";
+import { useEffect, useMemo, useState } from "react";
+import Map, { Source, Layer } from "react-map-gl";
+import styled from "styled-components";
+import { SettingFilled } from "@ant-design/icons";
+import {
+  fetchDiveCreatures,
+  fetchDiveCoords,
+} from "../../../redux/redux-modules/dive/actions";
+import { connect } from "react-redux";
+import moment from "moment";
 
-function Results() {
+const StyledContainer = styled.div`
+  width: 100%;
+  aspect-ratio: 1/1;
+  max-height: 400px;
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+`;
+
+const CreatureOverlay = styled.div`
+  width: 10%;
+  aspect-ratio: 1/1;
+  max-height: 400px;
+  position: absolute;
+`;
+
+const CreaturePicker = styled.img`
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+`;
+
+const SettingsOverlay = styled.div`
+  height: 100%;
+  aspect-ratio: 1/1;
+  position: absolute;
+  top: 0;
+  right: 0;
+`;
+
+const SettingsIconStyle = {
+  fontSize: "2rem",
+  position: "absolute",
+  top: "0",
+  right: "0",
+  padding: "10px",
+};
+
+function Results(props) {
+  const { creaturesData, coordinatesData, loading } = props;
+
+  const [creatureImage, setCreatureImage] = useState(null);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [creatureOptions, setCreatureOptions] = useState(null);
+  const [diveFilters, setDiveFilters] = useState({});
+
+  //Creatures
+  useEffect(() => {
+    props.fetchDiveCreatures({ source: "DIVE_REPORTER" });
+  }, []);
+
+  useEffect(() => {
+    let options = [{ value: null, label: "Species" }];
+    creaturesData.map((creature) => {
+      options.push({
+        value: creature.id,
+        label: creature.name,
+      });
+    });
+    setCreatureOptions(options);
+  }, [creaturesData]);
+
+  const creatureFilterOption = (input, option) =>
+    (option?.label ?? "").toLowerCase().includes(input.toLowerCase());
+
+  const onCreatureChange = (creature) => {
+    let creaturePhoto;
+    if (creature) {
+      creaturePhoto = creaturesData.find((ele) => ele.id == creature).photos[0]
+        .link;
+      setCreatureImage("https://wave-labs.org/api/" + creaturePhoto);
+      setDiveFilters({ ...diveFilters, creature: creature });
+    } else {
+      setCreatureImage(null);
+      setDiveFilters({ ...diveFilters, creature: null });
+    }
+  };
+
+  //dates
+
+  const dateOptions = [
+    { value: null, label: "All time" },
+    {
+      value: moment().subtract(3, "months").format("YYYY-MM-DD"),
+      label: "Last 3 months",
+    },
+    {
+      value: moment().subtract(6, "months").format("YYYY-MM-DD"),
+      label: "Last 6 months",
+    },
+    {
+      value: moment().subtract(12, "months").format("YYYY-MM-DD"),
+      label: "Last year",
+    },
+  ];
+
+  const onDateChange = (value) => {
+    setDiveFilters({
+      ...diveFilters,
+      date: [value, moment().format("YYYY-MM-DD")], //from -> to
+    });
+  };
+
+  //dives
+
+  useEffect(() => {
+    props.fetchDiveCoords(diveFilters);
+  }, [diveFilters]);
+
+  const layerStyle = {
+    id: "point",
+    type: "heatmap",
+    paint: {
+      "heatmap-radius": 15,
+      "heatmap-color": [
+        "interpolate",
+        ["linear"],
+        ["heatmap-density"],
+        0,
+        "rgba(0, 0, 255, 0)",
+        0.1,
+        "rgba(130, 130, 255, 0.4)",
+
+        0.5,
+        "rgba(180, 180, 255, 0.8)",
+
+        1,
+        "rgba(230, 230, 255, .9)",
+      ],
+    },
+  };
+
+  const geoJsons = useMemo(() => {
+    let newCoordinates = [];
+    coordinatesData.map((element) => {
+      newCoordinates.push([element.longitude, element.latitude]);
+    });
+    return (
+      <Source
+        key={1}
+        type="geojson"
+        data={{
+          type: "FeatureCollection",
+          features: [
+            {
+              type: "Feature",
+              geometry: {
+                type: "MultiPoint",
+                coordinates: newCoordinates,
+              },
+            },
+          ],
+        }}
+      >
+        <Layer key={2} {...layerStyle} />
+      </Source>
+    );
+  }, [coordinatesData]);
+
   return (
-    <div>Results</div>
-  )
+    <StyledContainer>
+      <Map
+        mapboxAccessToken="pk.eyJ1IjoidGlnZXJ3aGFsZSIsImEiOiJjanBncmNscnAwMWx3M3ZxdDF2cW8xYWZvIn0.LVgciVtYclOed_hZ9oXY2g"
+        initialViewState={{
+          latitude: 32.749234,
+          longitude: -16.986946,
+          zoom: 9,
+        }}
+        style={{
+          height: "100%",
+          width: "100%",
+          borderRadius: "20px",
+          position: "absolute",
+        }}
+        mapStyle="mapbox://styles/tigerwhale/cjpgrt1sccjs92sqjfnuixnxc"
+      >
+        {loading && (
+          <Spin
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+            }}
+          />
+        )}
+        {!loading && geoJsons}
+      </Map>
+      <CreatureOverlay>
+        {creatureImage && <CreaturePicker src={creatureImage} />}
+      </CreatureOverlay>
+      <SettingsOverlay>
+        <Drawer
+          title="Results filters"
+          onClose={() => setDrawerOpen(false)}
+          open={drawerOpen}
+          getContainer={false}
+          mask={false}
+        >
+          <Select
+            style={{ width: "100%", marginBottom: "20px" }}
+            showSearch
+            placeholder="Select a species"
+            onChange={onCreatureChange}
+            filterOption={creatureFilterOption}
+            options={creatureOptions}
+          />
+          <Select
+            style={{ width: "100%", marginBottom: "20px" }}
+            defaultValue={{ value: null, label: "All time" }}
+            placeholder="Select a time interval"
+            onChange={onDateChange}
+            options={dateOptions}
+          />
+        </Drawer>
+        <SettingFilled
+          style={SettingsIconStyle}
+          onClick={() => setDrawerOpen(true)}
+        />
+      </SettingsOverlay>
+    </StyledContainer>
+  );
 }
 
-export default Results
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchDiveCreatures: (filters) => dispatch(fetchDiveCreatures(filters)),
+    fetchDiveCoords: (filters) => dispatch(fetchDiveCoords(filters)),
+  };
+};
+
+const mapStateToProps = (state) => {
+  return {
+    creaturesData: state.dive.creaturesData,
+    coordinatesData: state.dive.coordinatesData,
+    loading: state.dive.loading,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Results);

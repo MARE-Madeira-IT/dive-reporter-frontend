@@ -19,7 +19,7 @@ const StyledHeader = styled(Header)`
   background: rgb(255, 254, 252) !important;
   padding: 0 !important;
   margin: 0;
-  /* transition: 0.5s ease; */
+  transition: 0.5s ease;
 `;
 
 const Logo = styled(Link)`

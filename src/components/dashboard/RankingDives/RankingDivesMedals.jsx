@@ -10,6 +10,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  max-width: 500px;
 `;
 
 const LevelContainer = styled.div`
@@ -34,7 +35,7 @@ const StyledTitle = styled.div`
   font-size: 2rem;
 `;
 
-function RankingDivesContent(props) {
+function RankingDivesMedals(props) {
   const { data } = props;
   const [first, setFirst] = useState({});
   const [second, setSecond] = useState({});
@@ -63,7 +64,6 @@ function RankingDivesContent(props) {
               boxShadow: "5px 8px 24px 5px rgba(208, 216, 243, 0.6)",
               borderRadius: "16px",
               backgroundColor: "#FEE101",
-              maxWidth: "500px",
             }}
           >
             {first && (
@@ -82,7 +82,6 @@ function RankingDivesContent(props) {
               borderRadius: "16px",
               marginRight: "20%",
               backgroundColor: "#A7A7AD",
-              maxWidth: "500px",
             }}
           >
             {second && (
@@ -101,7 +100,6 @@ function RankingDivesContent(props) {
               borderRadius: "16px",
               marginLeft: "20%",
               backgroundColor: "#A77044",
-              maxWidth: "500px",
             }}
           >
             {third && (
@@ -129,7 +127,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(RankingDivesContent);
+export default connect(mapStateToProps, mapDispatchToProps)(RankingDivesMedals);

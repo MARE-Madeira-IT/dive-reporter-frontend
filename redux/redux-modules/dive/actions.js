@@ -18,3 +18,15 @@ export const fetchRankingDives = () => ({
   payload: api.fetchRankingDives(),
   meta: { globalError: true },
 });
+
+export const fetchDiveCreatures = (filters) => ({
+  type: types.FETCH_DIVE_CREATURES,
+  payload: api.fetchDiveCreatures(filters),
+  meta: { globalError: true },
+});
+
+export const fetchDiveCoords = (filters) => ({
+  type: types.FETCH_DIVE_COORDS,
+  payload: api.fetchDiveCoords(filters),
+  meta: { globalError: true },
+});

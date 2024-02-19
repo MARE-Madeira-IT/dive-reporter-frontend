@@ -109,7 +109,7 @@ function Login(props) {
               </StyledLink>
             </Col>
             <Col xs={24} align="middle">
-              <StyledLink to={"/forgot-password"}>
+              <StyledLink to={"https://wave-labs.org/password/forgot"}>
                 Forgot your password? <b> Recover password!</b>
               </StyledLink>
             </Col>

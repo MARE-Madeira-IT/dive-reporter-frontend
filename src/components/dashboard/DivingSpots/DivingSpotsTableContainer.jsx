@@ -158,6 +158,7 @@ function DivingSpotsTableContainer(props) {
           columns={columns}
           handleTableChange={handleTableChange}
           data={data}
+          pageSize={10}
           onRow={(record) => ({
             onClick: () => {
               handleRowClick(record);
