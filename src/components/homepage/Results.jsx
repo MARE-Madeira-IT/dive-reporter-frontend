@@ -1,4 +1,4 @@
-import { Drawer, Select, Spin } from "antd";
+import { Drawer, Row, Col, Select, Spin } from "antd";
 import { useEffect, useMemo, useState } from "react";
 import Map, { Source, Layer } from "react-map-gl";
 import styled from "styled-components";
@@ -129,15 +129,15 @@ function Results(props) {
         ["linear"],
         ["heatmap-density"],
         0,
-        "rgba(0, 0, 255, 0)",
+        "rgba(255, 0, 0, 0)",
         0.1,
-        "rgba(130, 130, 255, 0.4)",
+        "rgba(255, 130, 130, 0.4)",
 
         0.5,
-        "rgba(180, 180, 255, 0.8)",
+        "rgba(255, 180, 180, 0.8)",
 
         1,
-        "rgba(230, 230, 255, .9)",
+        "rgba(255, 230, 230, 0.9)",
       ],
     },
   };
@@ -170,66 +170,73 @@ function Results(props) {
   }, [coordinatesData]);
 
   return (
-    <StyledContainer>
-      <Map
-        mapboxAccessToken="pk.eyJ1IjoidGlnZXJ3aGFsZSIsImEiOiJjanBncmNscnAwMWx3M3ZxdDF2cW8xYWZvIn0.LVgciVtYclOed_hZ9oXY2g"
-        initialViewState={{
-          latitude: 32.749234,
-          longitude: -16.986946,
-          zoom: 9,
-        }}
-        style={{
-          height: "100%",
-          width: "100%",
-          borderRadius: "20px",
-          position: "absolute",
-        }}
-        mapStyle="mapbox://styles/tigerwhale/cjpgrt1sccjs92sqjfnuixnxc"
-      >
-        {loading && (
-          <Spin
-            style={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
+    <Row>
+      <Col xs={24} align="center">
+        <h1 style={{ fontSize: "3rem" }}>The results</h1>
+      </Col>
+      <Col xs={24}>
+        <StyledContainer>
+          <Map
+            mapboxAccessToken="pk.eyJ1IjoidGlnZXJ3aGFsZSIsImEiOiJjanBncmNscnAwMWx3M3ZxdDF2cW8xYWZvIn0.LVgciVtYclOed_hZ9oXY2g"
+            initialViewState={{
+              latitude: 32.749234,
+              longitude: -16.986946,
+              zoom: 9,
             }}
-          />
-        )}
-        {!loading && geoJsons}
-      </Map>
-      <CreatureOverlay>
-        {creatureImage && <CreaturePicker src={creatureImage} />}
-      </CreatureOverlay>
-      <SettingsOverlay>
-        <Drawer
-          title="Results filters"
-          onClose={() => setDrawerOpen(false)}
-          open={drawerOpen}
-          getContainer={false}
-          mask={false}
-        >
-          <Select
-            style={{ width: "100%", marginBottom: "20px" }}
-            showSearch
-            placeholder="Select a species"
-            onChange={onCreatureChange}
-            filterOption={creatureFilterOption}
-            options={creatureOptions}
-          />
-          <Select
-            style={{ width: "100%", marginBottom: "20px" }}
-            defaultValue={{ value: null, label: "All time" }}
-            placeholder="Select a time interval"
-            onChange={onDateChange}
-            options={dateOptions}
-          />
-        </Drawer>
-        <SettingFilled
-          style={SettingsIconStyle}
-          onClick={() => setDrawerOpen(true)}
-        />
-      </SettingsOverlay>
-    </StyledContainer>
+            style={{
+              height: "100%",
+              width: "100%",
+              borderRadius: "20px",
+              position: "absolute",
+            }}
+            mapStyle="mapbox://styles/tigerwhale/cjpgrt1sccjs92sqjfnuixnxc"
+          >
+            {loading && (
+              <Spin
+                style={{
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                }}
+              />
+            )}
+            {!loading && geoJsons}
+          </Map>
+          <CreatureOverlay>
+            {creatureImage && <CreaturePicker src={creatureImage} />}
+          </CreatureOverlay>
+          <SettingsOverlay>
+            <Drawer
+              title="Results filters"
+              onClose={() => setDrawerOpen(false)}
+              open={drawerOpen}
+              getContainer={false}
+              mask={false}
+            >
+              <Select
+                style={{ width: "100%", marginBottom: "20px" }}
+                showSearch
+                placeholder="Select a species"
+                onChange={onCreatureChange}
+                filterOption={creatureFilterOption}
+                options={creatureOptions}
+              />
+              <Select
+                style={{ width: "100%", marginBottom: "20px" }}
+                defaultValue={{ value: null, label: "All time" }}
+                placeholder="Select a time interval"
+                onChange={onDateChange}
+                options={dateOptions}
+              />
+            </Drawer>
+            <SettingFilled
+              style={SettingsIconStyle}
+              onClick={() => setDrawerOpen(true)}
+            />
+          </SettingsOverlay>
+        </StyledContainer>
+      </Col>
+    </Row>
   );
 }
 

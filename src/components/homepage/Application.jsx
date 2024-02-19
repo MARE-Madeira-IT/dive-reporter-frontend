@@ -33,7 +33,7 @@ function Application() {
   return (
     <Container gutter={16} justify={"center"}>
       <Col xs={24} lg={12} align={"middle"}>
-        <MockupImage src="/../src/assets/TabletMockUpTilted.png" />
+        <MockupImage src="/../src/assets/tabletMockup.png" />
       </Col>
       <Col xs={24} lg={12} align={"middle"}>
         <h1>The application</h1>
