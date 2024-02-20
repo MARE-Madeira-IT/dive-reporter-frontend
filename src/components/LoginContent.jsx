@@ -43,6 +43,7 @@ function Login(props) {
   const navigate = useNavigate();
 
   const onFinish = (formFields) => {
+    console.log(formFields);
     props
       .login(formFields)
       .then((data) => {
@@ -66,13 +67,17 @@ function Login(props) {
               </p>
             </HeaderSection>
           </Col>
-          <Row gutter={[16, 8]} justify={"end"}>
+          <Row gutter={[16, 8]}>
             <Col xs={24} sm={12}>
               <Form.Item
                 label="Email"
                 labelCol={{ span: 24 }}
                 name="email"
                 rules={[
+                  {
+                    required: true,
+                    message: "Please input your email!",
+                  },
                   {
                     type: "email",
                     message: "Please use a valid email!",
@@ -87,10 +92,17 @@ function Login(props) {
                 label="Password"
                 labelCol={{ span: 24 }}
                 name="password"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your password!",
+                  },
+                ]}
               >
                 <Input.Password placeholder="Password" />
               </Form.Item>
             </Col>
+
             <Col xs={24} sm={12} align="end">
               <Form.Item>
                 <Button

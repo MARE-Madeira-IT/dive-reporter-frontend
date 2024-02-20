@@ -12,17 +12,12 @@ export const createUser = (data) => ({
 
 export const login = (data) => {
   return (dispatch) => {
-    return axios
-      .post(`${url}/login`, data)
-      .then((res) => {
-        const token = res.data.data.access_token;
-        localStorage.setItem("token", token);
-        setAuthorizationToken(token);
-        dispatch(loginSuccess(jwtDecode(token), res.data.user));
-      })
-      .catch((err) => {
-        resetToken();
-      });
+    return axios.post(`${url}/login`, data).then((res) => {
+      const token = res.data.data.access_token;
+      localStorage.setItem("token", token);
+      setAuthorizationToken(token);
+      dispatch(loginSuccess(jwtDecode(token), res.data.user));
+    });
   };
 };
 
@@ -43,7 +38,7 @@ export const logout = () => {
   return (dispatch) => {
     const response = dispatch({
       type: types.LOGOUT,
-      payload: axios.post(`${url}/logout`),
+      payload: axios.get(`${url}/logout`),
     });
     response.then((res) => {
       resetToken();
