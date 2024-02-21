@@ -1,6 +1,6 @@
 import { Row, Col } from "antd";
 import ReportsStatsContent from "./ReportsStats/ReportsStatsContent";
-import Reports from "./Reports";
+import ReportsContent from "./Reports/ReportsContent";
 import DivingSpotsContent from "./DivingSpots/DivingSpotsContent";
 import RankingDivesContent from "./RankingDives/RankingDivesContent";
 
@@ -14,7 +14,7 @@ function DashboardContent() {
         <ReportsStatsContent />
       </Col>
       <Col xs={24}>
-        <Reports />
+        <ReportsContent />
       </Col>
       <Col xs={24}>
         <DivingSpotsContent />

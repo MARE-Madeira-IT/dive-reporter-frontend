@@ -12,6 +12,7 @@ const MapContainer = styled.div`
   width: 100%;
   aspect-ratio: 1 / 1;
   max-height: 400px;
+  border-radius: 100px;
 `;
 
 function DivingSpotMapList(props) {

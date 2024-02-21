@@ -23,12 +23,20 @@ const fetchDiveCoords = (filters = {}) =>
     })}`
   );
 
+const fetchDive = (page = 1, filters = {}) =>
+  axios.get(
+    `${url}/dive?${queryString.stringify(filters, {
+      arrayFormat: "index",
+    })}&page=${page}`
+  );
+
 const api = {
   fetchMonthlyDives,
   fetchMostReportedSpecies,
   fetchRankingDives,
   fetchDiveCreatures,
   fetchDiveCoords,
+  fetchDive,
 };
 
 export default api;

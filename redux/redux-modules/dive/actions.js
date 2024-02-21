@@ -30,3 +30,9 @@ export const fetchDiveCoords = (filters) => ({
   payload: api.fetchDiveCoords(filters),
   meta: { globalError: true },
 });
+
+export const fetchDive = (page = 1, filters = {}) => ({
+  type: types.FETCH_DIVE,
+  payload: api.fetchDive(page, filters),
+  meta: { globalError: true },
+});

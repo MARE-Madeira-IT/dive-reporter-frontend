@@ -18,6 +18,7 @@ export default (state = initialState, action = {}) => {
     case `${types.FETCH_RANKING_DIVES}_PENDING`:
     case `${types.FETCH_DIVE_CREATURES}_PENDING`:
     case `${types.FETCH_DIVE_COORDS}_PENDING`:
+    case `${types.FETCH_DIVE}_PENDING`:
       return {
         ...state,
         loading: true,
@@ -28,6 +29,7 @@ export default (state = initialState, action = {}) => {
     case `${types.FETCH_RANKING_DIVES}_REJECTED`:
     case `${types.FETCH_DIVE_CREATURES}_REJECTED`:
     case `${types.FETCH_DIVE_COORDS}_REJECTED`:
+    case `${types.FETCH_DIVE}_REJECTED`:
       return {
         ...state,
         loading: false,
@@ -62,6 +64,14 @@ export default (state = initialState, action = {}) => {
         ...state,
         loading: false,
         coordinatesData: action.payload.data.data,
+      };
+
+    case `${types.FETCH_DIVE}_FULFILLED`:
+      return {
+        ...state,
+        loading: false,
+        data: action.payload.data.data,
+        meta: action.payload.data.meta,
       };
 
     default:

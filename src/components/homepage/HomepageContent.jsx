@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { Row, Col } from "antd";
 
-import Home from "./homepage/Home";
-import Application from "./homepage/Application";
-import Results from "./homepage/Results";
-import Participate from "./homepage/Participate";
+import Home from "./Home";
+import Application from "./Application";
+import Results from "./Results";
+import Participate from "./Participate";
 
 const HomeContainer = styled(Row)`
   width: 100vw;

@@ -48,6 +48,29 @@ const SettingsIconStyle = {
   padding: "10px",
 };
 
+const layerStyle = {
+  id: "point",
+  type: "heatmap",
+  paint: {
+    "heatmap-radius": 15,
+    "heatmap-color": [
+      "interpolate",
+      ["linear"],
+      ["heatmap-density"],
+      0,
+      "rgba(255, 0, 0, 0)",
+      0.1,
+      "rgba(255, 130, 130, 0.4)",
+
+      0.5,
+      "rgba(255, 180, 180, 0.8)",
+
+      1,
+      "rgba(255, 230, 230, 0.9)",
+    ],
+  },
+};
+
 function Results(props) {
   const { creaturesData, coordinatesData, loading } = props;
 
@@ -118,29 +141,6 @@ function Results(props) {
   useEffect(() => {
     props.fetchDiveCoords(diveFilters);
   }, [diveFilters]);
-
-  const layerStyle = {
-    id: "point",
-    type: "heatmap",
-    paint: {
-      "heatmap-radius": 15,
-      "heatmap-color": [
-        "interpolate",
-        ["linear"],
-        ["heatmap-density"],
-        0,
-        "rgba(255, 0, 0, 0)",
-        0.1,
-        "rgba(255, 130, 130, 0.4)",
-
-        0.5,
-        "rgba(255, 180, 180, 0.8)",
-
-        1,
-        "rgba(255, 230, 230, 0.9)",
-      ],
-    },
-  };
 
   const geoJsons = useMemo(() => {
     let newCoordinates = [];

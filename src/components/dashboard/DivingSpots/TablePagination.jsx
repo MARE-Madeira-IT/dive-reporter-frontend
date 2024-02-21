@@ -16,7 +16,7 @@ const TablePagination = ({
   data,
   onRow,
   showSizeChanger = false,
-  showQuickJumper = true,
+  showQuickJumper = false,
   pageSize,
 }) => {
   // PAGINATION OPTIONS
