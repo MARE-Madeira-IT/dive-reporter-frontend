@@ -1,9 +1,8 @@
 .container {
   width: 100vw;
-  /* overflow: hidden; */
+  overflow: hidden;
   max-height: 100vh;
   display: grid;
-  scroll-margin-top: 70px;
 }
 
 .backgroundImage {
