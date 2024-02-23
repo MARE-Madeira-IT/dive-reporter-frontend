@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.levelContainer {
+  padding: 10px;
+}
+
+.diveCenterName {
+  line-height: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+  padding: 10px;
+}
+
+.diveCenterCount {
+  line-height: 1.5rem;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.title {
+  font-size: 2rem;
+}

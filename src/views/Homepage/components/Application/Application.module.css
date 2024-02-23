@@ -1,0 +1,22 @@
+.container {
+  padding: 50px;
+}
+
+.container h1 {
+  font-size: 3rem;
+}
+
+.container p {
+  font-size: 1rem;
+}
+
+.container a {
+  text-decoration: none;
+  color: black;
+}
+
+.mockupImage {
+  width: 100%;
+  height: auto;
+  max-width: 500px;
+}

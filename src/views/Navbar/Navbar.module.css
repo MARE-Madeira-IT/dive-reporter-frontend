@@ -1,0 +1,67 @@
+.headerContainer {
+  background: rgb(255, 254, 252) !important;
+  padding: 0 !important;
+  margin: 0;
+  transition: 0.5s ease;
+  border-bottom: 1px solid rgb(255, 254, 252);
+}
+
+.logo img {
+  padding: 10px;
+  height: 40px;
+}
+
+.hidden {
+  box-sizing: border-box;
+}
+
+.ant-affix {
+  z-index: 999;
+}
+
+.navbarLink {
+  color: black;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 10px;
+
+  &:hover {
+    color: #636b6f;
+  }
+}
+
+.menuButton {
+  box-sizing: border-box;
+}
+
+.drawerNavbar h3 {
+  font-weight: bold;
+  margin-top: 6px;
+  margin-bottom: 0px;
+}
+
+.spacer {
+  color: #636b6f;
+  font-size: 16px;
+  padding: 10px;
+}
+
+.navContainer {
+  width: 90%;
+  max-width: 1500px;
+  margin: auto;
+}
+
+@media (max-width: 1000px) {
+  /* if smaller than 1000px */
+  .hidden {
+    display: none;
+  }
+}
+
+@media (min-width: 1000px) {
+  /* if bigger than 1000px */
+  .menuButton {
+    display: none;
+  }
+}

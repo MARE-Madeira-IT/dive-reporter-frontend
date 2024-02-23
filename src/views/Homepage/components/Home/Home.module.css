@@ -1,0 +1,47 @@
+.container {
+  width: 100vw;
+  overflow: hidden;
+  max-height: 100vh;
+  display: grid;
+  /* scroll-margin-top: -50px; */
+}
+
+.backgroundImage {
+  width: 100vw;
+  height: auto;
+  grid-area: 1 / 1 / 1 / 4;
+}
+
+.textContainer {
+  grid-area: 1 / 1 / 1 / 4;
+  width: 100vw;
+  text-align: center;
+  padding-top: 10%;
+}
+
+.textContainer h1 {
+  font-size: 5rem;
+  color: white;
+  line-height: 1;
+  width: 95%;
+}
+
+.textContainer p {
+  font-size: 2rem;
+  color: white;
+  line-height: 1;
+  width: 95%;
+}
+
+@media (max-width: 600px) {
+  .container {
+    height: 100vh;
+    max-width: 100vw;
+    width: auto;
+  }
+
+  .backgroundImage {
+    height: 100vh;
+    width: auto;
+  }
+}

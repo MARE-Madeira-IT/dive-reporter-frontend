@@ -1,0 +1,64 @@
+.title {
+  font-size: 2rem;
+}
+
+.drawer {
+  font-size: 14px;
+  line-height: 22px;
+  margin-bottom: 10px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.drawerTitle {
+  font-size: 30px;
+  line-height: 50px;
+  margin-bottom: 10px;
+  color: rgba(0, 0, 0, 0.65);
+  text-align: center;
+}
+
+.drawerContent {
+  flex-direction: column;
+}
+
+.mapContainer {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-height: 400px;
+}
+
+.drawerItemTitle {
+  margin-right: 8px;
+  display: inline-block;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.85);
+
+  &:after {
+    content: ":";
+  }
+}
+
+.drawerItemText {
+  margin-right: 8px;
+  display: inline-block;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.table {
+  padding: 16px 0;
+  width: 100%;
+  & td {
+    white-space: pre-wrap;
+  }
+}
+
+.modalTitle {
+  font-size: 1rem;
+  margin: auto;
+  text-align: center;
+}
+
+.filterContainer{
+  padding: 10px;
+}
