@@ -71,6 +71,7 @@ function ReportsTable(props) {
       onChange={handleTableChange}
       dataSource={data}
       pagination={pagination}
+      rowKey={(record) => record.id}
     />
   );
 }
