@@ -140,7 +140,7 @@ function Results(props) {
   }, [coordinatesData]);
 
   return (
-    <Row id="results">
+    <Row id="results" className={styles.container}>
       <Col xs={24} align="center">
         <h1 style={{ fontSize: "3rem" }}>The results</h1>
       </Col>
