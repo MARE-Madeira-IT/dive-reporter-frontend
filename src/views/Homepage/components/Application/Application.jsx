@@ -12,7 +12,7 @@ function Application() {
       <Col xs={24} lg={12} align={"middle"}>
         <img
           className={styles.mockupImage}
-          src="src/assets/tabletMockup.png"
+          src="/assets/tabletMockup.png"
         />
       </Col>
       <Col xs={24} lg={12} align={"middle"}>

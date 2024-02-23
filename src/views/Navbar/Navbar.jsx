@@ -25,7 +25,7 @@ const Navbar = (props) => {
         <Row className={styles.navContainer} align={"middle"}>
           <Col xs={20} lg={4}>
             <Link className={styles.logo} to="/">
-              <img src="src/assets/logos/logoName.png" />
+              <img src="/assets/logos/logoName.png" />
             </Link>
           </Col>
           <Col xs={4} lg={20}>

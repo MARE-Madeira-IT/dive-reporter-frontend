@@ -32,7 +32,7 @@ function Footer() {
         {logoPaths.map((element, index) => (
           <Col key={index} lg={2} md={2} sm={3} xs={4}>
             <Link className={styles.logo}>
-              <img src={`src/assets/logos/${element}.png`} />
+              <img src={`/assets/logos/${element}.png`} />
             </Link>
           </Col>
         ))}

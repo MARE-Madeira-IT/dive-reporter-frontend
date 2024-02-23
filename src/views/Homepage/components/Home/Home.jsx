@@ -22,8 +22,8 @@ function Home() {
         className={styles.backgroundImage}
         src={
           windowWidth > 600
-            ? "src/assets/landing16_9.png"
-            : "src/assets/landing9_16.png"
+            ? "/assets/landing16_9.png"
+            : "/assets/landing9_16.png"
         }
       />
       <div className={styles.textContainer}>
