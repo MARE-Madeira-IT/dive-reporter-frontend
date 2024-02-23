@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import { Row, Col, Divider } from "antd";
 import {
-  IeOutlined,
   InstagramOutlined,
   YoutubeOutlined,
   FacebookOutlined,
-  TwitterOutlined,
   LinkedinOutlined,
+  XOutlined,
+  GlobalOutlined,
 } from "@ant-design/icons";
 import styles from "./Footer.module.css";
 
@@ -42,7 +42,7 @@ function Footer() {
       <div className={styles.description}>Contact: team@wave-labs.org</div>
       <Row className={styles.socialLogos} align={"middle"} gutter={16}>
         <Link to={"https://mare-madeira.pt/"} target="_blank">
-          <IeOutlined />
+          <GlobalOutlined />
         </Link>
         <Link
           to={"https://www.instagram.com/mare_madeira/?hl=en"}
@@ -57,7 +57,7 @@ function Footer() {
           <FacebookOutlined />
         </Link>
         <Link to={"https://twitter.com/MARE_Madeira"} target="_blank">
-          <TwitterOutlined />
+          <XOutlined />
         </Link>
         <Link
           to={"https://www.linkedin.com/company/mare-madeira/"}

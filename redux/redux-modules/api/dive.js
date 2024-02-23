@@ -1,7 +1,7 @@
 import axios from "axios";
 import queryString from "query-string";
 
-const url = `http://localhost:8000/api`;
+const url = `${import.meta.env.VITE_API}/api`;
 
 const fetchMonthlyDives = () => axios.get(`${url}/dive-monthly`);
 

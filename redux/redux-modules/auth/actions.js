@@ -3,7 +3,7 @@ import api from "../api/auth";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 
-const url = `http://localhost:8000/api`;
+const url = `${import.meta.env.VITE_API}/api`;
 
 export const createUser = (data) => ({
   type: types.CREATE_USER,
