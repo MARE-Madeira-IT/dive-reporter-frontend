@@ -43,8 +43,10 @@ function DiveMostReported(props) {
     },
     scales: {
       y: {
+        min: 0,
+        max: Math.max(...data) + 1,
         ticks: {
-          beginAtZero: true,
+          stepSize: 1,
         },
       },
     },

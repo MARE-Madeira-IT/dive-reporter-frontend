@@ -42,6 +42,15 @@ function DiveMontlyGraph(props) {
       },
     },
     maintainAspectRatio: false,
+    scales: {
+      y: {
+        min: 0,
+        max: Math.max(...data) + 1,
+        ticks: {
+          stepSize: 1,
+        },
+      },
+    },
   };
 
   const info = {
