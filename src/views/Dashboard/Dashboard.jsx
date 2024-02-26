@@ -3,12 +3,13 @@ import ReportsStats from "./components/ReportsStats/ReportsStats";
 import Reports from "./components/Reports/Reports";
 import DivingSpots from "./components/DivingSpots/DivingSpots";
 import RankingDives from "./components/RankingDives/RankingDives";
+import BarRanking from "./components/RankingDives/BarRanking";
 
 function Dashboard() {
   return (
     <Row>
       <Col xs={24} align={"center"}>
-        <RankingDives />
+        <BarRanking />
       </Col>
       <Col xs={24}>
         <ReportsStats />
