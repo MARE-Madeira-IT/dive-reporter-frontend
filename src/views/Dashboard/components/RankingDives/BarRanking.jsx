@@ -2,16 +2,10 @@ import { connect } from "react-redux";
 import { fetchRankingDives } from "redux_modules/dive/actions";
 import { Divider } from "antd";
 import { useEffect, useState } from "react";
-import styled from "styled-components";
 import Chart from "chart.js/auto";
 import { Bar } from "react-chartjs-2";
-
-const StyledContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 400px;
-`;
+import styles from "./RankingDives.module.css";
+import ChartDataLabels from "chartjs-plugin-datalabels";
 
 function BarRanking(props) {
   const { data } = props;
@@ -25,6 +19,9 @@ function BarRanking(props) {
   }, []);
 
   useEffect(() => {
+    setFirst(data[0]);
+    setSecond(data[1]);
+    setThird(data[2]);
     var labels = [second.user, first.user, third.user];
     var occurrences = [second.count, first.count, third.count];
     setInfo({
@@ -38,19 +35,29 @@ function BarRanking(props) {
         },
       ],
     });
-  }, [third]);
-
-  useEffect(() => {
-    setFirst(data[0]);
-    setSecond(data[1]);
-    setThird(data[2]);
   }, [data]);
 
   const options = {
     responsive: true,
+    layout: {
+      padding: 20,
+    },
     plugins: {
       legend: {
         display: false,
+      },
+      datalabels: {
+        labels: {
+          value: {
+            color: "black",
+            font: {
+              size: "30px",
+              weight: "bold",
+            },
+            anchor: "end",
+            align: "end",
+          },
+        },
       },
     },
     scales: {
@@ -61,15 +68,10 @@ function BarRanking(props) {
         },
       },
       x: {
-        position: "top",
+        position: "bottom",
         grid: {
           display: false,
         },
-        /*  labels: {
-           usePointStyle: true,
-           pointStyle: "circle",
-           padding: 20,
-         }, */
       },
     },
     maintainAspectRatio: false,
@@ -78,11 +80,13 @@ function BarRanking(props) {
   return (
     <>
       <Divider orientation="left">
-        <div>Dive centers ranking</div>
+        <div className={styles.title}>Dive centers ranking</div>
       </Divider>
-      <StyledContainer>
-        {info && <Bar options={options} data={info} />}
-      </StyledContainer>
+      <div className={styles.container}>
+        {info && (
+          <Bar options={options} data={info} plugins={[ChartDataLabels]} />
+        )}
+      </div>
     </>
   );
 }
