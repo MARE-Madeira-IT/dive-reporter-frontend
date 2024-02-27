@@ -22,20 +22,25 @@ function BarRanking(props) {
     setFirst(data[0]);
     setSecond(data[1]);
     setThird(data[2]);
-    var labels = [second.user, first.user, third.user];
-    var occurrences = [second.count, first.count, third.count];
-    setInfo({
-      labels,
-      datasets: [
-        {
-          label: "Number of occurrences",
-          data: occurrences,
-          borderColor: ["#A7A7AD", "#FEE101", "#A77044"],
-          backgroundColor: ["#A7A7AD", "#FEE101", "#A77044"],
-        },
-      ],
-    });
   }, [data]);
+
+  useEffect(() => {
+    if (third) {
+      var labels = [second.user, first.user, third.user];
+      var occurrences = [second.count, first.count, third.count];
+      setInfo({
+        labels,
+        datasets: [
+          {
+            label: "Number of occurrences",
+            data: occurrences,
+            borderColor: ["#A7A7AD", "#FEE101", "#A77044"],
+            backgroundColor: ["#A7A7AD", "#FEE101", "#A77044"],
+          },
+        ],
+      });
+    }
+  }, [third]);
 
   const options = {
     responsive: true,
