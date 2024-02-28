@@ -60,7 +60,8 @@ function DiveMontlyGraph(props) {
         label: "Number of dives per month",
         data: data,
         borderColor: "rgb(0, 0, 255)",
-        backgroundColor: "rgba(0, 0, 255, 0.5)",
+        backgroundColor: "rgba(0, 0, 255, 0.3)",
+        fill: "origin" 
       },
     ],
   };
