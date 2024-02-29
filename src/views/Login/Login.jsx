@@ -14,7 +14,7 @@ function Login(props) {
     props
       .login(formFields)
       .then((data) => {
-        navigate("/");
+        navigate("/dashboard");
       })
       .catch((error) => {
         message.error(error.response.data.message, 5);

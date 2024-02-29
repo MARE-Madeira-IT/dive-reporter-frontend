@@ -26,7 +26,7 @@ function DiveMostReported(props) {
       labels,
       datasets: [
         {
-          label: "Number of occurrences",
+          label: "Number of sightings",
           data: occurrences,
           borderColor: "rgb(0, 0, 255)",
           backgroundColor: "rgba(0, 0, 255, 0.5)",
