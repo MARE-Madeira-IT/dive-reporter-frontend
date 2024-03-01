@@ -1,9 +1,7 @@
-FROM node:20.11-alpine as builder
-WORKDIR /home/node/app
+FROM node:20.11-alpine
+WORKDIR /app
+COPY package.json .
+RUN npm install
 COPY . .
-RUN npm ci
-RUN npm run build
-
-FROM nginx:1.24-alpine as server
-COPY --from=builder /home/node/app/dist /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+EXPOSE 3000
+CMD [ "npm", "run", "dev" ]
