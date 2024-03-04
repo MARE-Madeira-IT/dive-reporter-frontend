@@ -27,8 +27,10 @@ function Home() {
         }
       />
       <div className={styles.textContainer}>
-        <h1>Dive Reporter</h1>
-        <p>A low-cost long-term monitoring program</p>
+        <div>
+          <h1>Dive Reporter</h1>
+          <p>A low-cost long-term monitoring program</p>
+        </div>
       </div>
     </div>
   );

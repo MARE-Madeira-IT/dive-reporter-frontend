@@ -31,3 +31,10 @@
   top: 0;
   right: 0;
 }
+
+.containerGraph {
+  height: 100%;
+  max-height: 400px;
+  margin-bottom: "5em";
+  padding: 10px;
+}

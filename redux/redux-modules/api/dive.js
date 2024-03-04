@@ -3,7 +3,12 @@ import queryString from "query-string";
 
 const url = `${import.meta.env.VITE_API}/api`;
 
-const fetchMonthlyDives = () => axios.get(`${url}/dive-monthly`);
+const fetchMonthlyDives = (filters = { self: false }) =>
+  axios.get(
+    `${url}/dive-monthly?${queryString.stringify(filters, {
+      arrayFormat: "index",
+    })}`
+  );
 
 const fetchMostReportedSpecies = () => axios.get(`${url}/dive-most-reported`);
 

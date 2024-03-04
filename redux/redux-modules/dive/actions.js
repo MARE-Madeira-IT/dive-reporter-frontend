@@ -1,9 +1,9 @@
 import { types } from "./types";
 import api from "../api/dive";
 
-export const fetchMonthlyDives = () => ({
+export const fetchMonthlyDives = (filters) => ({
   type: types.FETCH_MONTHLY_DIVE,
-  payload: api.fetchMonthlyDives(),
+  payload: api.fetchMonthlyDives(filters),
   meta: { globalError: true },
 });
 

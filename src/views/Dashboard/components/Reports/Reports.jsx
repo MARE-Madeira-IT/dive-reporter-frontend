@@ -1,4 +1,4 @@
-import { Col, Row } from "antd";
+import { Col, Divider, Row } from "antd";
 import { fetchDive } from "redux_modules/dive/actions";
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
@@ -20,7 +20,9 @@ function Reports(props) {
   return (
     <Row>
       <Col xs={24}>
-        <div className={styles.title}>My reports</div>
+        <Divider orientation="left">
+          <div className={styles.title}>My Reports</div>
+        </Divider>
       </Col>
       <Col xs={24}>
         <ReportsFilters filters={filters} setFilters={setFilters} />

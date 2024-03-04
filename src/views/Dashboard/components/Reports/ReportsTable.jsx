@@ -2,6 +2,7 @@ import { Table, Badge } from "antd";
 import { connect } from "react-redux";
 import { fetchDive } from "redux_modules/dive/actions";
 import styles from "./Reports.module.css";
+import { useEffect } from "react";
 
 const columns = [
   {
@@ -45,10 +46,20 @@ const columns = [
       </span>
     ),
   },
+  {
+    title: "Date",
+    dataIndex: "date",
+    align: "center",
+    render: (date) => <span>{date.split(" ")[0]}</span>,
+  },
 ];
 
 function ReportsTable(props) {
   const { data, loading, meta, filters } = props;
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
 
   const handleTableChange = (page) => {
     props.fetchDive(page.current, filters);

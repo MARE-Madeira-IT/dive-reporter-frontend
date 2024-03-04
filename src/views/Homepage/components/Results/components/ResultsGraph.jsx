@@ -3,15 +3,15 @@ import { fetchMonthlyDives } from "redux_modules/dive/actions";
 import { connect } from "react-redux";
 import Chart from "chart.js/auto";
 import { Line } from "react-chartjs-2";
-import styles from "./ReportsStats.module.css";
+import styles from "../Results.module.css";
 
-function DiveMontlyGraph(props) {
+function ResultsGraph(props) {
   const { data } = props;
 
   var labels = [];
 
   useEffect(() => {
-    props.fetchMonthlyDives({ self: true });
+    props.fetchMonthlyDives();
   }, []);
 
   var monthName = new Array(
@@ -67,8 +67,7 @@ function DiveMontlyGraph(props) {
   };
 
   return (
-    <div style={{ maxHeight: "500px", marginBottom: "5em" }}>
-      <div className={styles.title}> Reports per month </div>
+    <div className={styles.containerGraph}>
       <Line options={options} data={info} />
     </div>
   );
@@ -86,4 +85,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DiveMontlyGraph);
+export default connect(mapStateToProps, mapDispatchToProps)(ResultsGraph);

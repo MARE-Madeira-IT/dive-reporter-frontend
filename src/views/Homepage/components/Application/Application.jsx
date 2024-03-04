@@ -26,10 +26,10 @@ function Application() {
           not only kept for the purpose of science but can also be valuable data
           for their businesses.
         </p>
-        <p>Want to participate in this project or expand it further?</p>
+        <p>Do you want to participate in this project or expand it further?</p>
         <p>
           <a href="/#participate">
-            <b> Get in contact with us.</b>
+            <b>Get in contact with us.</b>
           </a>
         </p>
       </Col>
