@@ -1,9 +1,23 @@
-# Production
+# Development
 
-docker build -t react-app .
+Recommended to use docker for development. The following commands allow for the development of the application without the need to install any dependencies.
 
-docker run -p 3000:3000 react-app
+```sh
+docker build -t dive-reporter-frontend .
+docker run -e WATCHPACK_POLLING=true -v ${pwd}\src:/app/src:ro  -d -p 3000:3000 --name dive-reporter-frontend dive-reporter-frontend 
+```
 
-Running this commands will install all dependencies, build and deploy the website. 
+In case docker is not used, the following are needed:
 
-The dockerfile includes the correct node and nginx versions needed.
+Node v20.11.0
+Npm v10.2.4
+
+Then: 
+
+
+```sh
+npm install
+npm run dev
+```
+
+
