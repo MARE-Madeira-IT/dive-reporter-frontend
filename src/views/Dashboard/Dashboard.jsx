@@ -5,6 +5,7 @@ import DivingSpots from "./components/DivingSpots/DivingSpots";
 import RankingDives from "./components/RankingDives/RankingDives";
 import BarRanking from "./components/RankingDives/BarRanking";
 import Profile from "./components/Profile/Profile";
+import Species from "./components/Species/Species";
 
 const items = [
   {
@@ -20,9 +21,7 @@ const items = [
   {
     key: "3",
     label: "Species",
-    children: (
-      <Reports />
-    ) /* ToDo: Make the species with the photos, on click on the species it opens a modal with the photo, graph of amount of reports of that species and information about it */,
+    children: <Species />,
   },
   {
     key: "4",

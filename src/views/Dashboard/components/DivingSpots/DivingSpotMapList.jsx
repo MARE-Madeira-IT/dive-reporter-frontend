@@ -1,4 +1,4 @@
-import Map, { Marker } from "react-map-gl";
+import Map, { Marker, Popup } from "react-map-gl";
 import { connect } from "react-redux";
 import {
   addToUser,
@@ -6,9 +6,12 @@ import {
   removeFromUser,
 } from "redux_modules/divingSpots/actions";
 import styles from "./DivingSpot.module.css";
+import { useState } from "react";
+import DivingSpotPopup from "./DivingSpotPopup";
 
 function DivingSpotMapList(props) {
   const { data, user, filters } = props;
+  const [popup, setPopup] = useState(null);
 
   const hasDivingSpot = (users) => {
     var hasUser = false;
@@ -28,6 +31,21 @@ function DivingSpotMapList(props) {
   const removeSpot = (id) => {
     props.removeFromUser({ divingSpot: id });
     props.fetchSelector(filters);
+  };
+
+  const showPopup = () => {
+    return (
+      popup && (
+        <Popup
+          tipSize={5}
+          longitude={parseFloat(popup.longitude)}
+          latitude={parseFloat(popup.latitude)}
+          closeOnClick={false}
+        >
+          <DivingSpotPopup divingSpot={popup} />
+        </Popup>
+      )
+    );
   };
 
   return (
@@ -51,7 +69,9 @@ function DivingSpotMapList(props) {
               anchor="center"
               color="green"
               onClick={() => removeSpot(record.id)}
-            ></Marker>
+            >
+              <img src="/assets/mapMarkers/33.png" />
+            </Marker>
           ) : (
             <Marker
               key={record.id}
@@ -60,9 +80,16 @@ function DivingSpotMapList(props) {
               anchor="center"
               color="red"
               onClick={() => addSpot(record.id)}
-            ></Marker>
+            >
+              <img
+                src="/assets/mapMarkers/0.png"
+                onMouseOver={() => setPopup(record)}
+                onMouseLeave={() => setPopup(null)}
+              />
+            </Marker>
           )
         )}
+        {showPopup()}
       </Map>
     </div>
   );
