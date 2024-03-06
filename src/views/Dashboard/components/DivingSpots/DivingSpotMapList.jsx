@@ -70,7 +70,11 @@ function DivingSpotMapList(props) {
               color="green"
               onClick={() => removeSpot(record.id)}
             >
-              <img src="/assets/mapMarkers/33.png" />
+              <img
+                src="/assets/mapMarkers/33.png"
+                onMouseOver={() => setPopup(record)}
+                onMouseLeave={() => setPopup(null)}
+              />
             </Marker>
           ) : (
             <Marker
