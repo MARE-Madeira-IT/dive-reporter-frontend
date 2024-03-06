@@ -35,6 +35,8 @@ const fetchDive = (page = 1, filters = {}) =>
     })}&page=${page}`
   );
 
+const deleteDive = (id) => axios.delete(`${url}/dive/${id}`);
+
 const api = {
   fetchMonthlyDives,
   fetchMostReportedSpecies,
@@ -42,6 +44,7 @@ const api = {
   fetchDiveCreatures,
   fetchDiveCoords,
   fetchDive,
+  deleteDive,
 };
 
 export default api;

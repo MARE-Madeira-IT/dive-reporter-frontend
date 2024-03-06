@@ -22,149 +22,151 @@ const Navbar = (props) => {
 
   return (
     <Affix offsetTop={0}>
-      <Header className={styles.headerContainer}>
-        <Row className={styles.navContainer} align={"middle"}>
-          <Col xs={20} lg={4}>
-            <Link className={styles.logo} to="/">
-              <img src="/assets/logos/logoName.png" />
-            </Link>
-          </Col>
-          <Col xs={4} lg={20}>
-            <div className={styles.hidden}>
-              <Row type="flex" justify="end">
-                <>
-                  {navigation.map((element) => (
-                    <Link
-                      className={styles.navbarLink}
-                      key={element.name}
-                      to={{
-                        pathname: "/",
-                      }}
-                      onClick={() => {
-                        let el = document.getElementById(`${element.link}`);
-                        if (el) {
-                          el.scrollIntoView({ behavior: "smooth" });
-                        }
-                      }}
-                    >
-                      {element.name}
-                    </Link>
-                  ))}
-                </>
-                {isAuthenticated ? (
+      <div>
+        <Header className={styles.headerContainer}>
+          <Row className={styles.navContainer} align={"middle"}>
+            <Col xs={20} lg={4}>
+              <Link className={styles.logo} to="/">
+                <img src="/assets/logos/logoName.png" />
+              </Link>
+            </Col>
+            <Col xs={4} lg={20}>
+              <div className={styles.hidden}>
+                <Row type="flex" justify="end">
                   <>
-                    <div className={styles.spacer}>|</div>
-
-                    <Link
-                      className={styles.navbarLink}
-                      key={"dashboard"}
-                      to={"/dashboard"}
-                    >
-                      Dashboard
-                    </Link>
-                    <Link
-                      className={styles.navbarLink}
-                      key={"logout"}
-                      to=""
-                      onClick={() => {
-                        props.logout();
-                      }}
-                    >
-                      Logout
-                    </Link>
+                    {navigation.map((element) => (
+                      <Link
+                        className={styles.navbarLink}
+                        key={element.name}
+                        to={{
+                          pathname: "/",
+                        }}
+                        onClick={() => {
+                          let el = document.getElementById(`${element.link}`);
+                          if (el) {
+                            el.scrollIntoView({ behavior: "smooth" });
+                          }
+                        }}
+                      >
+                        {element.name}
+                      </Link>
+                    ))}
                   </>
-                ) : (
-                  <>
-                    <div className={styles.spacer}>|</div>
-                    <Link
-                      className={styles.navbarLink}
-                      key={"login"}
-                      to={"/login"}
-                    >
-                      Login
-                    </Link>
-                  </>
-                )}
-              </Row>
-            </div>
+                  {isAuthenticated ? (
+                    <>
+                      <div className={styles.spacer}>|</div>
 
-            <div className={styles.menuButton}>
-              <Row type="flex" justify="end">
-                <Button
-                  onClick={() => setVisible(true)}
-                  style={{ margin: "15px" }}
-                  type="primary"
-                >
-                  <MenuOutlined />
-                </Button>
-              </Row>
-            </div>
-          </Col>
-        </Row>
-      </Header>
-      <Drawer
-        className={styles.drawerNavbar}
-        open={visible}
-        onClose={() => setVisible(false)}
-        placement="right"
-      >
-        <Menu>
-          {isAuthenticated ? (
-            <>
-              <Menu.Item key={"dashboard"}>
+                      <Link
+                        className={styles.navbarLink}
+                        key={"dashboard"}
+                        to={"/dashboard"}
+                      >
+                        Dashboard
+                      </Link>
+                      <Link
+                        className={styles.navbarLink}
+                        key={"logout"}
+                        to=""
+                        onClick={() => {
+                          props.logout();
+                        }}
+                      >
+                        Logout
+                      </Link>
+                    </>
+                  ) : (
+                    <>
+                      <div className={styles.spacer}>|</div>
+                      <Link
+                        className={styles.navbarLink}
+                        key={"login"}
+                        to={"/login"}
+                      >
+                        Login
+                      </Link>
+                    </>
+                  )}
+                </Row>
+              </div>
+
+              <div className={styles.menuButton}>
+                <Row type="flex" justify="end">
+                  <Button
+                    onClick={() => setVisible(true)}
+                    style={{ margin: "15px" }}
+                    type="primary"
+                  >
+                    <MenuOutlined />
+                  </Button>
+                </Row>
+              </div>
+            </Col>
+          </Row>
+        </Header>
+        <Drawer
+          className={styles.drawerNavbar}
+          open={visible}
+          onClose={() => setVisible(false)}
+          placement="right"
+        >
+          <Menu>
+            {isAuthenticated ? (
+              <>
+                <Menu.Item key={"dashboard"}>
+                  <Link
+                    className={styles.navbarLink}
+                    onClick={() => setVisible(false)}
+                    to="/dashboard"
+                  >
+                    <b>Dashboard</b>
+                  </Link>
+                </Menu.Item>
+
+                <Menu.Item key={"logout"}>
+                  <Link
+                    className={styles.navbarLink}
+                    to=""
+                    onClick={() => {
+                      props.logout();
+                    }}
+                  >
+                    <b>Logout</b>
+                  </Link>
+                </Menu.Item>
+              </>
+            ) : (
+              <Menu.Item key={"login"}>
                 <Link
                   className={styles.navbarLink}
                   onClick={() => setVisible(false)}
-                  to="/dashboard"
+                  to="/login"
                 >
-                  <b>Dashboard</b>
+                  <b>Login</b>
                 </Link>
               </Menu.Item>
+            )}
 
-              <Menu.Item key={"logout"}>
+            {navigation.map((element) => (
+              <Menu.Item key={element.name}>
                 <Link
                   className={styles.navbarLink}
-                  to=""
+                  key={element.name}
+                  to={`/`}
                   onClick={() => {
-                    props.logout();
+                    let el = document.getElementById(`${element.link}`);
+                    if (el) {
+                      el.scrollIntoView({ behavior: "smooth" });
+                    }
+                    setVisible(false);
                   }}
                 >
-                  <b>Logout</b>
+                  {element.name}
                 </Link>
               </Menu.Item>
-            </>
-          ) : (
-            <Menu.Item key={"login"}>
-              <Link
-                className={styles.navbarLink}
-                onClick={() => setVisible(false)}
-                to="/login"
-              >
-                <b>Login</b>
-              </Link>
-            </Menu.Item>
-          )}
-
-          {navigation.map((element) => (
-            <Menu.Item key={element.name}>
-              <Link
-                className={styles.navbarLink}
-                key={element.name}
-                to={`/`}
-                onClick={() => {
-                  let el = document.getElementById(`${element.link}`);
-                  if (el) {
-                    el.scrollIntoView({ behavior: "smooth" });
-                  }
-                  setVisible(false);
-                }}
-              >
-                {element.name}
-              </Link>
-            </Menu.Item>
-          ))}
-        </Menu>
-      </Drawer>
+            ))}
+          </Menu>
+        </Drawer>
+      </div>
     </Affix>
   );
 };

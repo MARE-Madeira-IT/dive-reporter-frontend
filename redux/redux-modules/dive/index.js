@@ -21,6 +21,7 @@ export default (state = initialState, action = {}) => {
     case `${types.FETCH_DIVE_COORDS}_PENDING`:
     case `${types.FETCH_DIVE}_PENDING`:
     case `${types.FETCH_SPECIES_DIVES}_PENDING`:
+    case `${types.DELETE_DIVE}_PENDING`:
       return {
         ...state,
         loading: true,
@@ -38,6 +39,7 @@ export default (state = initialState, action = {}) => {
     case `${types.FETCH_DIVE_COORDS}_REJECTED`:
     case `${types.FETCH_DIVE}_REJECTED`:
     case `${types.FETCH_SPECIES_DIVES}_REJECTED`:
+    case `${types.DELETE_DIVE}_REJECTED`:
       return {
         ...state,
         loading: false,
@@ -93,6 +95,13 @@ export default (state = initialState, action = {}) => {
         ...state,
         loading: false,
         speciesData: action.payload.data,
+      };
+
+    case `${types.DELETE_DIVE}_FULFILLED`:
+      return {
+        ...state,
+        loading: false,
+        data: state.data.filter((dive) => dive.id !== action.meta.id),
       };
 
     default:

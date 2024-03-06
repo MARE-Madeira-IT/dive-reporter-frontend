@@ -42,3 +42,9 @@ export const fetchDive = (page = 1, filters = {}) => ({
   payload: api.fetchDive(page, filters),
   meta: { globalError: true },
 });
+
+export const deleteDive = (id) => ({
+  type: types.DELETE_DIVE,
+  payload: api.deleteDive(id),
+  meta: { id, globalError: true },
+});
