@@ -12,7 +12,6 @@ function ParticipateForm(props) {
   const onFinish = (formFields) => {
     formFields.section = "contact";
     formFields.subject = "Dive Reporter";
-    console.log(formFields);
     props
       .createContact(formFields)
       .then((data) => {

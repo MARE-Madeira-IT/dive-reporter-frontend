@@ -13,7 +13,6 @@ function DiveMostReported(props) {
   var occurrences = [];
 
   useEffect(() => {
-    console.log("initial run to fetch");
     props.fetchMostReportedSpecies();
   }, []);
 

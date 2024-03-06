@@ -1,4 +1,4 @@
-import { Col, Row } from "antd";
+import { Col, Divider, Row } from "antd";
 import styles from "./Species.module.css";
 import SpeciesGrid from "./components/SpeciesGrid";
 import { useState } from "react";
@@ -9,8 +9,10 @@ function Species() {
 
   return (
     <Row id="species" className={styles.container}>
-      <Col xs={24} align="center">
-        <h1 style={{ fontSize: "3rem" }}>The species</h1>
+      <Col xs={24}>
+        <Divider orientation="left">
+          <div className={styles.title}>Species</div>
+        </Divider>
       </Col>
       <Col xs={24} align="center">
         <SpeciesGrid setRecord={setRecord} />

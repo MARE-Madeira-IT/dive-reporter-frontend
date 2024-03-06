@@ -11,7 +11,7 @@ function SpeciesGraph(props) {
   var labels = [];
 
   useEffect(() => {
-    props.fetchSpeciesDives({ creature: creature });
+    props.fetchSpeciesDives({ creature: creature, self: true });
   }, [creature]);
 
   var monthName = new Array(

@@ -4,6 +4,7 @@ import Reports from "./components/Reports/Reports";
 import DivingSpots from "./components/DivingSpots/DivingSpots";
 import BarRanking from "./components/RankingDives/BarRanking";
 import Profile from "./components/Profile/Profile";
+import Species from "./components/Species/Species";
 
 const items = [
   {
@@ -19,7 +20,7 @@ const items = [
   {
     key: "3",
     label: "Species",
-    children: <Reports />,
+    children: <Species />,
   },
   {
     key: "4",
@@ -38,7 +39,7 @@ function Dashboard() {
         <BarRanking />
       </Col>
       <Col xs={24} align={"center"}>
-        <Tabs defaultActiveKey="1" type="card" items={items} />;
+        <Tabs defaultActiveKey="1" type="card" items={items} />
       </Col>
     </Row>
   );
