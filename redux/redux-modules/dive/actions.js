@@ -7,6 +7,12 @@ export const fetchMonthlyDives = (filters) => ({
   meta: { globalError: true },
 });
 
+export const fetchSpeciesDives = (filters) => ({
+  type: types.FETCH_SPECIES_DIVES,
+  payload: api.fetchMonthlyDives(filters),
+  meta: { globalError: true },
+});
+
 export const fetchMostReportedSpecies = () => ({
   type: types.FETCH_MOST_REPORTED_SPECIES,
   payload: api.fetchMostReportedSpecies(),

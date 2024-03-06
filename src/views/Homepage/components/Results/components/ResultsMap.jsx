@@ -42,12 +42,17 @@ const layerStyle = {
 };
 
 function ResultsMap(props) {
-  const { creaturesData, coordinatesData, loading } = props;
+  const {
+    creaturesData,
+    coordinatesData,
+    loading,
+    diveFilters,
+    setDiveFilters,
+  } = props;
 
   const [creatureImage, setCreatureImage] = useState(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [creatureOptions, setCreatureOptions] = useState(null);
-  const [diveFilters, setDiveFilters] = useState({});
 
   //Creatures
   useEffect(() => {
@@ -73,7 +78,7 @@ function ResultsMap(props) {
     if (creature) {
       creaturePhoto = creaturesData.find((ele) => ele.id == creature).photos[0]
         .link;
-      setCreatureImage("https://wave-labs.org/api/" + creaturePhoto);
+      setCreatureImage(`${import.meta.env.VITE_API}/api/` + creaturePhoto);
       setDiveFilters({ ...diveFilters, creature: creature });
     } else {
       setCreatureImage(null);

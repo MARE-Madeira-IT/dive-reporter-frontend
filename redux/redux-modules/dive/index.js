@@ -9,6 +9,8 @@ const initialState = {
   coordinatesData: [],
   meta: {}, //meta information about Dive and pagination
   loading: false,
+  loadingCreatures: false,
+  speciesData: [],
 };
 
 export default (state = initialState, action = {}) => {
@@ -16,23 +18,35 @@ export default (state = initialState, action = {}) => {
     case `${types.FETCH_MONTHLY_DIVE}_PENDING`:
     case `${types.FETCH_MOST_REPORTED_SPECIES}_PENDING`:
     case `${types.FETCH_RANKING_DIVES}_PENDING`:
-    case `${types.FETCH_DIVE_CREATURES}_PENDING`:
     case `${types.FETCH_DIVE_COORDS}_PENDING`:
     case `${types.FETCH_DIVE}_PENDING`:
+    case `${types.FETCH_SPECIES_DIVES}_PENDING`:
       return {
         ...state,
         loading: true,
       };
 
+    case `${types.FETCH_DIVE_CREATURES}_PENDING`:
+      return {
+        ...state,
+        loadingCreatures: true,
+      };
+
     case `${types.FETCH_MONTHLY_DIVE}_REJECTED`:
     case `${types.FETCH_MOST_REPORTED_SPECIES}_REJECTED`:
     case `${types.FETCH_RANKING_DIVES}_REJECTED`:
-    case `${types.FETCH_DIVE_CREATURES}_REJECTED`:
     case `${types.FETCH_DIVE_COORDS}_REJECTED`:
     case `${types.FETCH_DIVE}_REJECTED`:
+    case `${types.FETCH_SPECIES_DIVES}_REJECTED`:
       return {
         ...state,
         loading: false,
+      };
+
+    case `${types.FETCH_DIVE_CREATURES}_REJECTED`:
+      return {
+        ...state,
+        loadingCreatures: false,
       };
 
     case `${types.FETCH_MONTHLY_DIVE}_FULFILLED`:
@@ -56,7 +70,7 @@ export default (state = initialState, action = {}) => {
     case `${types.FETCH_DIVE_CREATURES}_FULFILLED`:
       return {
         ...state,
-        loading: false,
+        loadingCreatures: false,
         creaturesData: action.payload.data.data,
       };
     case `${types.FETCH_DIVE_COORDS}_FULFILLED`:
@@ -72,6 +86,13 @@ export default (state = initialState, action = {}) => {
         loading: false,
         data: action.payload.data.data,
         meta: action.payload.data.meta,
+      };
+
+    case `${types.FETCH_SPECIES_DIVES}_FULFILLED`:
+      return {
+        ...state,
+        loading: false,
+        speciesData: action.payload.data,
       };
 
     default:

@@ -1,18 +1,22 @@
 import { useEffect } from "react";
-import { fetchMonthlyDives } from "redux_modules/dive/actions";
+import { fetchSpeciesDives } from "redux_modules/dive/actions";
 import { connect } from "react-redux";
 import Chart from "chart.js/auto";
 import { Line } from "react-chartjs-2";
-import styles from "../Results.module.css";
+import styles from "../Species.module.css";
 
-function ResultsGraph(props) {
-  const { data, diveFilters } = props;
+function SpeciesGraph(props) {
+  const { data, creature } = props;
 
   var labels = [];
 
   useEffect(() => {
-    props.fetchMonthlyDives(diveFilters);
-  }, [diveFilters]);
+    props.fetchSpeciesDives({ creature: creature });
+  }, [creature]);
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
 
   var monthName = new Array(
     "January",
@@ -67,7 +71,7 @@ function ResultsGraph(props) {
   };
 
   return (
-    <div className={styles.containerGraph}>
+    <div className={styles.graphContainer}>
       <Line options={options} data={info} />
     </div>
   );
@@ -75,14 +79,14 @@ function ResultsGraph(props) {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchMonthlyDives: (filters) => dispatch(fetchMonthlyDives(filters)),
+    fetchSpeciesDives: (filters) => dispatch(fetchSpeciesDives(filters)),
   };
 };
 
 const mapStateToProps = (state) => {
   return {
-    data: state.dive.monthlyData,
+    data: state.dive.speciesData,
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ResultsGraph);
+export default connect(mapStateToProps, mapDispatchToProps)(SpeciesGraph);

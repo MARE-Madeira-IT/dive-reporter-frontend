@@ -12,6 +12,7 @@ const navigation = [
   { name: "Home", link: "home" },
   { name: "Application", link: "application" },
   { name: "Results", link: "results" },
+  { name: "Species", link: "species" },
   { name: "Participate", link: "participate" },
 ];
 
