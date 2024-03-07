@@ -10,7 +10,12 @@ const fetchMonthlyDives = (filters = { self: false }) =>
     })}`
   );
 
-const fetchMostReportedSpecies = () => axios.get(`${url}/dive-most-reported`);
+const fetchMostReportedSpecies = (filters = {}) =>
+  axios.get(
+    `${url}/dive-most-reported?${queryString.stringify(filters, {
+      arrayFormat: "index",
+    })}`
+  );
 
 const fetchRankingDives = () => axios.get(`${url}/dive-ranking`);
 
