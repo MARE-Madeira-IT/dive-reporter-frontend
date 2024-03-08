@@ -14,8 +14,9 @@ function SpeciesGrid(props) {
               onClick={() => setRecord(element)}
             >
               <img
-                src={`/assets/image/dive/${element.id}.png`}
+                src={`/assets/image/dive/${element.id}.webp`}
                 className={styles.speciesImages}
+                alt={`Photo of ${element.name}`}
               />
             </div>
           </Col>

@@ -72,6 +72,7 @@ function DivingSpotMapList(props) {
             >
               <img
                 src="/assets/mapMarkers/33.png"
+                alt="Marker for the diving spot which is associated with the user"
                 onMouseOver={() => setPopup(record)}
                 onMouseLeave={() => setPopup(null)}
               />
@@ -87,6 +88,7 @@ function DivingSpotMapList(props) {
             >
               <img
                 src="/assets/mapMarkers/0.png"
+                alt="Marker for the diving spot which is not associated with the user"
                 onMouseOver={() => setPopup(record)}
                 onMouseLeave={() => setPopup(null)}
               />
