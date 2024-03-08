@@ -19,7 +19,6 @@ const logoPaths = [
   "logoFCT",
   "logoMac",
   "logoClimarest",
-  "logoCleanAtlantic",
   "logoPlasmar",
 ];
 
