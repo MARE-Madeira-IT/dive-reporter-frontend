@@ -69,7 +69,14 @@ export function setAuthorizationToken(token) {
     ? (axios.defaults.headers.common["Authorization"] = `Bearer ${token}`)
     : delete axios.defaults.headers.common["Authorization"];
 }
+
 export function resetToken() {
   localStorage.removeItem("token");
   setAuthorizationToken(false);
 }
+
+export const updateProfilePicture = (id, data) => ({
+  type: types.UPDATE_PROFILE_PICTURE,
+  payload: api.updateProfilePicture(id, data),
+  meta: { globalError: true },
+});

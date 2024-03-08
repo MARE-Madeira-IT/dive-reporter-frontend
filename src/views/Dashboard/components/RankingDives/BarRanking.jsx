@@ -45,7 +45,7 @@ function BarRanking(props) {
   const options = {
     responsive: true,
     layout: {
-      padding: 20,
+      padding: 30,
     },
     plugins: {
       legend: {

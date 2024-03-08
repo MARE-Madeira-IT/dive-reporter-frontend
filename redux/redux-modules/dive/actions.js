@@ -1,15 +1,21 @@
 import { types } from "./types";
 import api from "../api/dive";
 
-export const fetchMonthlyDives = () => ({
+export const fetchMonthlyDives = (filters) => ({
   type: types.FETCH_MONTHLY_DIVE,
-  payload: api.fetchMonthlyDives(),
+  payload: api.fetchMonthlyDives(filters),
   meta: { globalError: true },
 });
 
-export const fetchMostReportedSpecies = () => ({
+export const fetchSpeciesDives = (filters) => ({
+  type: types.FETCH_SPECIES_DIVES,
+  payload: api.fetchMonthlyDives(filters),
+  meta: { globalError: true },
+});
+
+export const fetchMostReportedSpecies = (filters) => ({
   type: types.FETCH_MOST_REPORTED_SPECIES,
-  payload: api.fetchMostReportedSpecies(),
+  payload: api.fetchMostReportedSpecies(filters),
   meta: { globalError: true },
 });
 
@@ -35,4 +41,10 @@ export const fetchDive = (page = 1, filters = {}) => ({
   type: types.FETCH_DIVE,
   payload: api.fetchDive(page, filters),
   meta: { globalError: true },
+});
+
+export const deleteDive = (id) => ({
+  type: types.DELETE_DIVE,
+  payload: api.deleteDive(id),
+  meta: { id, globalError: true },
 });

@@ -3,9 +3,19 @@ import queryString from "query-string";
 
 const url = `${import.meta.env.VITE_API}/api`;
 
-const fetchMonthlyDives = () => axios.get(`${url}/dive-monthly`);
+const fetchMonthlyDives = (filters = { self: false }) =>
+  axios.get(
+    `${url}/dive-monthly?${queryString.stringify(filters, {
+      arrayFormat: "index",
+    })}`
+  );
 
-const fetchMostReportedSpecies = () => axios.get(`${url}/dive-most-reported`);
+const fetchMostReportedSpecies = (filters = {}) =>
+  axios.get(
+    `${url}/dive-most-reported?${queryString.stringify(filters, {
+      arrayFormat: "index",
+    })}`
+  );
 
 const fetchRankingDives = () => axios.get(`${url}/dive-ranking`);
 
@@ -30,6 +40,8 @@ const fetchDive = (page = 1, filters = {}) =>
     })}&page=${page}`
   );
 
+const deleteDive = (id) => axios.delete(`${url}/dive/${id}`);
+
 const api = {
   fetchMonthlyDives,
   fetchMostReportedSpecies,
@@ -37,6 +49,7 @@ const api = {
   fetchDiveCreatures,
   fetchDiveCoords,
   fetchDive,
+  deleteDive,
 };
 
 export default api;

@@ -1,24 +1,45 @@
-import { Row, Col } from "antd";
+import { Row, Col, Tabs } from "antd";
 import ReportsStats from "./components/ReportsStats/ReportsStats";
 import Reports from "./components/Reports/Reports";
 import DivingSpots from "./components/DivingSpots/DivingSpots";
-import RankingDives from "./components/RankingDives/RankingDives";
 import BarRanking from "./components/RankingDives/BarRanking";
+import Profile from "./components/Profile/Profile";
+import Species from "./components/Species/Species";
+
+const items = [
+  {
+    key: "1",
+    label: "My dives",
+    children: <ReportsStats />,
+  },
+  {
+    key: "2",
+    label: "My reports",
+    children: <Reports />,
+  },
+  {
+    key: "3",
+    label: "Species",
+    children: <Species />,
+  },
+  {
+    key: "4",
+    label: "Diving spots",
+    children: <DivingSpots />,
+  },
+];
 
 function Dashboard() {
   return (
     <Row>
-      <Col xs={24} align={"center"}>
+      <Col xs={24} lg={12} align={"center"}>
+        <Profile />
+      </Col>
+      <Col xs={24} lg={12} align={"center"}>
         <BarRanking />
       </Col>
-      <Col xs={24}>
-        <ReportsStats />
-      </Col>
-      <Col xs={24}>
-        <Reports />
-      </Col>
-      <Col xs={24}>
-        <DivingSpots />
+      <Col xs={24} align={"center"}>
+        <Tabs defaultActiveKey="1" type="card" items={items} />
       </Col>
     </Row>
   );

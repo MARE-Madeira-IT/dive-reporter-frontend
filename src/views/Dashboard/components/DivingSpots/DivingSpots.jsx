@@ -53,7 +53,6 @@ function DivingSpots(props) {
       </Row>
 
       <DivingSpotModalContainer creating={creating} setCreating={setCreating} />
-      {/* TODO: DIVING SPOT MODAL CONTAINER FOR WHEN ITS NEEDED TO CREATE A NEW DIVING SPOT */}
 
       <Row type="flex" gutter={24}>
         <Col xs={24}>
