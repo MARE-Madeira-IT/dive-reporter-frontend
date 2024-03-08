@@ -22,7 +22,7 @@ function SpeciesModal(props) {
         <Row gutter={16}>
           <Col xs={24} lg={12} align="center" style={{ marginTop: "30px" }}>
             <img
-              src={`/assets/${record.photos[0].link}.jfif`}
+              src={`/assets/image/dive/${record.id}.png`}
               className={styles.speciesImages}
             />
             <h1>{record.name}</h1>

@@ -14,7 +14,7 @@ function SpeciesGrid(props) {
               onClick={() => setRecord(element)}
             >
               <img
-                src={`/assets/${element.photos[0].link}.jfif`}
+                src={`/assets/image/dive/${element.id}.png`}
                 className={styles.speciesImages}
               />
             </div>

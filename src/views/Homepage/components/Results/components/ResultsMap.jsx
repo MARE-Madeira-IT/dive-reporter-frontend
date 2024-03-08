@@ -74,11 +74,8 @@ function ResultsMap(props) {
     (option?.label ?? "").toLowerCase().includes(input.toLowerCase());
 
   const onCreatureChange = (creature) => {
-    let creaturePhoto;
     if (creature) {
-      creaturePhoto = creaturesData.find((ele) => ele.id == creature).photos[0]
-        .link;
-      setCreatureImage(`${import.meta.env.VITE_API}/api/` + creaturePhoto);
+      setCreatureImage(`/assets/image/dive/${creature}.png`);
       setDiveFilters({ ...diveFilters, creature: creature });
     } else {
       setCreatureImage(null);
