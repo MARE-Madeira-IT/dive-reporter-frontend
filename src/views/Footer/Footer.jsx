@@ -34,7 +34,7 @@ function Footer() {
             <Link className={styles.logo}>
               <img
                 src={`/assets/logos/${element}.webp`}
-                alt="Logo for social medias"
+                alt="Logos of funders"
               />
             </Link>
           </Col>
