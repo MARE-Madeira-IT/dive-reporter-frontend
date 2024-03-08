@@ -20,6 +20,7 @@ const logoPaths = [
   "logoMac",
   "logoClimarest",
   "logoPlasmar",
+  "logoArnet",
 ];
 
 function Footer() {
