@@ -75,7 +75,7 @@ function ResultsMap(props) {
 
   const onCreatureChange = (creature) => {
     if (creature) {
-      setCreatureImage(`/assets/image/dive/${creature}.png`);
+      setCreatureImage(`/assets/image/dive/${creature}.webp`);
       setDiveFilters({ ...diveFilters, creature: creature });
     } else {
       setCreatureImage(null);
@@ -172,7 +172,9 @@ function ResultsMap(props) {
             {!loading && geoJsons}
           </Map>
           <div className={styles.creatureOverlay}>
-            {creatureImage && <img src={creatureImage} />}
+            {creatureImage && (
+              <img src={creatureImage} alt="Creature which was selected" />
+            )}
           </div>
           <div className={styles.settingsOverlay}>
             <Drawer

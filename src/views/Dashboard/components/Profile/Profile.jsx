@@ -44,7 +44,7 @@ function Profile(props) {
             onChange={handleChange}
           >
             <img
-              alt="example"
+              alt="Profile image"
               src={`http://127.0.0.1:8000/storage/uploaded/photo/profilePicture/${user.photo}`}
             />
             <CameraOutlined
