@@ -17,6 +17,7 @@ function SpeciesGrid(props) {
                 src={`/assets/image/dive/${element.id}.webp`}
                 className={styles.speciesImages}
                 alt={`Photo of ${element.name}`}
+                loading="lazy"
               />
             </div>
           </Col>
