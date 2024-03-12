@@ -12,15 +12,15 @@ import styles from "./Footer.module.css";
 
 const logoPaths = [
   "logoMARE",
+  "logoArnet",
   "logoArditi",
   "logoWave",
   "logoTigerwhale",
-  "logoEU",
+  "logoPlasmar",
+  "logoClimarest",
   "logoFCT",
   "logoMac",
-  "logoClimarest",
-  "logoCleanAtlantic",
-  "logoPlasmar",
+  "logoEU",
 ];
 
 function Footer() {
@@ -31,12 +31,12 @@ function Footer() {
       <Row gutter={[16, 16]} justify={"space-between"} align={"middle"}>
         {logoPaths.map((element, index) => (
           <Col key={index} lg={2} md={2} sm={3} xs={4}>
-            <Link className={styles.logo}>
+            <div className={styles.logos}>
               <img
                 src={`/assets/logos/${element}.webp`}
                 alt="Logo for social medias"
               />
-            </Link>
+            </div>
           </Col>
         ))}
       </Row>
