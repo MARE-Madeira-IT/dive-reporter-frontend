@@ -12,6 +12,10 @@ function SpeciesGrid(props) {
             <div
               className={styles.speciesContainer}
               onClick={() => setRecord(element)}
+              style={{
+                backgroundImage: `url(/assets/image/dive/${element.id}small.webp)`,
+                backgroundSize: "cover",
+              }}
             >
               <img
                 src={`/assets/image/dive/${element.id}.webp`}
