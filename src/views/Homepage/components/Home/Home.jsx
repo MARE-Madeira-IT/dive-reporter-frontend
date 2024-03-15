@@ -28,10 +28,8 @@ function Home() {
         alt="Landing page image of a diver"
       />
       <div className={styles.textContainer}>
-        <div>
-          <h1>Dive Reporter</h1>
-          <p>A low-cost long-term monitoring program</p>
-        </div>
+        <h1>Dive Reporter</h1>
+        <p>A low-cost long-term monitoring program</p>
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import styles from "../Participate.module.css";
 function ParticipateInfo() {
   return (
     <>
-      <h1 style={{ fontSize: "3rem" }}>Participate</h1>
+      <h1 style={{ fontSize: "3rem" }}>Join us</h1>
       <div className={styles.mainContentContainer} id="participate">
         <p>
           You can contact us if you are interested in expanding the program to

@@ -77,6 +77,11 @@ function BarRanking(props) {
         grid: {
           display: false,
         },
+        ticks: {
+          font: {
+            size: 18,
+          },
+        },
       },
     },
     maintainAspectRatio: false,
@@ -85,7 +90,7 @@ function BarRanking(props) {
   return (
     <>
       <Divider orientation="left">
-        <div className={styles.title}>Dive centers ranking</div>
+        <div className={styles.title}>Last 30 day ranking</div>
       </Divider>
       <div className={styles.container}>
         {info && (
