@@ -54,6 +54,15 @@ const Navbar = (props) => {
                         {element.name}
                       </Link>
                     ))}
+                    <Link
+                      className={styles.navbarLink}
+                      key="about"
+                      to={{
+                        pathname: "/about",
+                      }}
+                    >
+                      About
+                    </Link>
                   </>
                   {isAuthenticated ? (
                     <>
@@ -167,6 +176,15 @@ const Navbar = (props) => {
                 </Link>
               </Menu.Item>
             ))}
+             <Menu.Item key="about">
+                <Link
+                  className={styles.navbarLink}
+                  key="about"
+                  to={`/about`}
+                >
+                  About
+                </Link>
+              </Menu.Item>
           </Menu>
         </Drawer>
       </div>

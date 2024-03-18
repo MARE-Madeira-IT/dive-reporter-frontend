@@ -5,6 +5,8 @@ import Results from "./components/Results/Results";
 import Participate from "./components/Participate/Participate";
 import Species from "./components/Species/Species";
 import styles from "./Homepage.module.css";
+import Projects from "./components/Partners/Partners";
+import Partners from "./components/Projects/Projects";
 
 function Homepage() {
   return (
@@ -26,6 +28,12 @@ function Homepage() {
         </Col>
         <Col xs={24}>
           <Participate />
+        </Col>
+        <Col xs={24}>
+          <Projects />
+        </Col>
+        <Col xs={24}>
+          <Partners />
         </Col>
       </Row>
     </>

@@ -1,5 +1,5 @@
-import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import styles from "./App.module.css";
 //views
 import Navbar from "src/views/Navbar/Navbar";
 import Footer from "src/views/Footer/Footer";
@@ -8,17 +8,19 @@ import Login from "src/views/Login/Login";
 import Register from "src/views/Register/Register";
 import Dashboard from "src/views/Dashboard/Dashboard";
 import PrivateRoute from "src/views/Helpers/PrivateRoute";
+import About from "src/views/About/About";
 
 function App() {
   return (
-    <div className="app">
+    <div className={styles.app}>
       <BrowserRouter>
         <Navbar />
         <Routes>
           <Route path="/" element={<Homepage />} />
         </Routes>
-        <div className="mainContent">
+        <div className={styles.mainContent}>
           <Routes>
+            <Route path="/about" element={<About />} />
             <Route
               path="/dashboard"
               element={
