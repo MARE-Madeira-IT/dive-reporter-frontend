@@ -1,11 +1,24 @@
 import { Col, Divider, Row } from "antd";
 import styles from "./Partners.module.css";
 
-const logoPaths = ["logoTigerwhale", "logoUMa"];
+const logoPaths = [
+  "logoTigerwhale",
+  "logoUMa",
+  "atalaia",
+  "azul",
+  "calheta",
+  "cipreia",
+  "focus",
+  "haliotis",
+  "lava",
+  "madeiraDivePoint",
+  "manta",
+  "mero",
+];
 
 function Projects() {
   return (
-    <Row gutter={[16, 16]} align={"middle"}>
+    <Row gutter={[32, 16]} align={"middle"} justify={"space-around"}>
       <Divider orientation="left" className={styles.title}>
         <div>Partners</div>
       </Divider>

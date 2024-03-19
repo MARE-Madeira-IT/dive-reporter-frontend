@@ -5,7 +5,7 @@ const logoPaths = ["logoClimarest", "logoPlasmar"];
 
 function Partners() {
   return (
-    <Row gutter={[16, 16]} align={"middle"}>
+    <Row gutter={[16, 16]} align={"middle"} justify={"space-around"}>
       <Divider orientation="left" className={styles.title}>
         <div>Projects</div>
       </Divider>
