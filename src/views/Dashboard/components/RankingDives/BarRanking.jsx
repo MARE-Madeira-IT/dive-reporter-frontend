@@ -4,7 +4,7 @@ import { Divider } from "antd";
 import { useEffect, useState } from "react";
 import Chart from "chart.js/auto";
 import { Bar } from "react-chartjs-2";
-import styles from "./RankingDives.module.css";
+import styles from "./BarRanking.module.css";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 
 function BarRanking(props) {
@@ -42,10 +42,17 @@ function BarRanking(props) {
     }
   }, [third]);
 
+  const images = [
+    "/assets/medals/Medal2.png",
+    "/assets/medals/Medal1.png",
+    "/assets/medals/Medal3.png",
+  ];
   const options = {
     responsive: true,
     layout: {
-      padding: 30,
+      padding: {
+        bottom: 60,
+      },
     },
     plugins: {
       legend: {
@@ -81,11 +88,31 @@ function BarRanking(props) {
           font: {
             size: 18,
           },
+          padding: 22,
         },
       },
     },
     maintainAspectRatio: false,
   };
+
+  const plugins = [
+    {
+      afterDraw: (chart) => {
+        let ctx = chart.ctx;
+        ctx.save();
+        let xAxis = chart.scales["x"];
+        let yAxis = chart.scales["y"];
+        xAxis.ticks.forEach((value, index) => {
+          let x = xAxis.getPixelForTick(index);
+          let image = new Image();
+          image.src = images[index];
+          ctx.drawImage(image, x - 10, yAxis.bottom + 2);
+        });
+        ctx.restore();
+      },
+    },
+    ChartDataLabels,
+  ];
 
   return (
     <>
@@ -93,9 +120,7 @@ function BarRanking(props) {
         <div className={styles.title}>Last 30 day ranking</div>
       </Divider>
       <div className={styles.container}>
-        {info && (
-          <Bar options={options} data={info} plugins={[ChartDataLabels]} />
-        )}
+        {info && <Bar options={options} data={info} plugins={plugins} />}
       </div>
     </>
   );

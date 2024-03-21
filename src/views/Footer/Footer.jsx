@@ -38,7 +38,9 @@ function Footer() {
         ))}
       </Row>
 
-      <div className={styles.description}>©2024 | MARE-Madeira</div>
+      <div className={styles.description}>
+        ©{new Date().getFullYear()} | MARE-Madeira
+      </div>
       <div className={styles.description}>Contact: team@wave-labs.org</div>
       <Row className={styles.socialLogos} align={"middle"} gutter={16}>
         <Link to={"https://mare-madeira.pt/"} target="_blank">

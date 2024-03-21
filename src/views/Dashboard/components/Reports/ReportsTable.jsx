@@ -13,6 +13,11 @@ function ReportsTable(props) {
 
   const columns = [
     {
+      title: "User",
+      dataIndex: "userable",
+      render: (userable) => <span>{userable.user.name}</span>,
+    },
+    {
       title: "Diving spot",
       dataIndex: "diving_spot",
       align: "center",

@@ -1,17 +1,20 @@
 import { Col, Row } from "antd";
 import styles from "./About.module.css";
+import Team from "./components/Team";
+import Plasmar from "./components/Plasmar";
+import Climarest from "./components/Climarest";
 
 function About() {
   return (
-    <Row className={styles.mainContentContainer}>
-      <Col lg={12} xs={24}>
-        <p>teste</p>
+    <Row className={styles.mainContentContainer} justify={"center"}>
+      <Col xs={24} align="center">
+        <Team />
       </Col>
-      <Col lg={12} xs={24}>
-        <p>Second column</p>
+      <Col xs={24} align="center">
+        <Plasmar />
       </Col>
-      <Col lg={12} xs={24}>
-        <p>third column</p>
+      <Col xs={24} align="center">
+        <Climarest />
       </Col>
     </Row>
   );
