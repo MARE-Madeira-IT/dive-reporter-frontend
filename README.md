@@ -21,3 +21,20 @@ npm run dev
 ```
 
 
+
+# Production
+
+For building and testing the production build you can run: 
+
+```sh
+npm run build
+npm run preview
+```
+
+To deploy you just need to run:
+
+```sh
+npm run build
+```
+
+And then the /dist folder will have the build which you can upload (e.g netlify)
