@@ -1,5 +1,5 @@
 import { Drawer, Row, Col, Select, Spin } from "antd";
-import { useEffect, useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
 import Map, { Source, Layer } from "react-map-gl";
 import { SettingFilled } from "@ant-design/icons";
 import {
@@ -177,29 +177,31 @@ function ResultsMap(props) {
             )}
           </div>
           <div className={styles.settingsOverlay}>
-            <Drawer
-              title="Results filters"
-              onClose={() => setDrawerOpen(false)}
-              open={drawerOpen}
-              getContainer={false}
-              mask={false}
-            >
-              <Select
-                style={{ width: "100%", marginBottom: "20px" }}
-                showSearch
-                placeholder="Select a species"
-                onChange={onCreatureChange}
-                filterOption={creatureFilterOption}
-                options={creatureOptions}
-              />
-              <Select
-                style={{ width: "100%", marginBottom: "20px" }}
-                defaultValue={{ value: null, label: "All time" }}
-                placeholder="Select a time interval"
-                onChange={onDateChange}
-                options={dateOptions}
-              />
-            </Drawer>
+            <Suspense fallback={<h1>Loading species</h1>}>
+              <Drawer
+                title="Results filters"
+                onClose={() => setDrawerOpen(false)}
+                open={drawerOpen}
+                getContainer={false}
+                mask={false}
+              >
+                <Select
+                  style={{ width: "100%", marginBottom: "20px" }}
+                  showSearch
+                  placeholder="Select a species"
+                  onChange={onCreatureChange}
+                  filterOption={creatureFilterOption}
+                  options={creatureOptions}
+                />
+                <Select
+                  style={{ width: "100%", marginBottom: "20px" }}
+                  defaultValue={{ value: null, label: "All time" }}
+                  placeholder="Select a time interval"
+                  onChange={onDateChange}
+                  options={dateOptions}
+                />
+              </Drawer>
+            </Suspense>
             <SettingFilled
               style={SettingsIconStyle}
               onClick={() => setDrawerOpen(true)}

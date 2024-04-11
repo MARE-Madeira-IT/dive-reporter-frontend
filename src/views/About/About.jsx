@@ -1,8 +1,10 @@
 import { Col, Row } from "antd";
 import styles from "./About.module.css";
 import Team from "./components/Team";
-import Plasmar from "./components/Plasmar";
-import Climarest from "./components/Climarest";
+import Prototype from "./components/Prototype";
+import Validation from "./components/Validation";
+import MobileApp from "./components/MobileApp";
+import Kiosk from "./components/Kiosk";
 
 function About() {
   return (
@@ -11,10 +13,16 @@ function About() {
         <Team />
       </Col>
       <Col xs={24} align="center">
-        <Plasmar />
+        <Prototype />
       </Col>
       <Col xs={24} align="center">
-        <Climarest />
+        <Validation />
+      </Col>
+      <Col xs={24} align="center">
+        <MobileApp />
+      </Col>
+      <Col xs={24} align="center">
+        <Kiosk />
       </Col>
     </Row>
   );
