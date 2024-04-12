@@ -31,7 +31,7 @@ const items = [
 
 function Dashboard() {
   return (
-    <Row>
+    <Row gutter={16}>
       <Col xs={24} lg={12} align={"center"}>
         <Profile />
       </Col>

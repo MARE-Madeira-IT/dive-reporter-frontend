@@ -67,7 +67,7 @@ function DiveMontlyGraph(props) {
   };
 
   return (
-    <div style={{ maxHeight: "500px", marginBottom: "5em" }}>
+    <div style={{ height: "400px" }}>
       <div className={styles.title}> Reports per month </div>
       <Line options={options} data={info} />
     </div>

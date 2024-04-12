@@ -96,7 +96,7 @@ function DiveMostReported(props) {
   };
 
   return (
-    <div style={{ maxHeight: "500px", marginBottom: "5em" }}>
+    <div style={{ height: "400px" }}>
       <div className={styles.title}> Most reported species </div>
       {info && (
         <>
