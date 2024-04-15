@@ -51,7 +51,7 @@ function BarRanking(props) {
     responsive: true,
     layout: {
       padding: {
-        bottom: 20,
+        top: 50,
       },
     },
     plugins: {
