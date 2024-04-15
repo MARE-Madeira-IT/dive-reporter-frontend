@@ -42,6 +42,16 @@ const fetchDive = (page = 1, filters = {}) =>
 
 const deleteDive = (id) => axios.delete(`${url}/dive/${id}`);
 
+const exportDiveCsv = (filters) =>
+  axios.get(
+    `${url}/export/csv/dive?${queryString.stringify(filters, {
+      arrayFormat: "index",
+    })}`,
+    {
+      responseType: "blob",
+    }
+  );
+
 const api = {
   fetchMonthlyDives,
   fetchMostReportedSpecies,
@@ -50,6 +60,7 @@ const api = {
   fetchDiveCoords,
   fetchDive,
   deleteDive,
+  exportDiveCsv,
 };
 
 export default api;

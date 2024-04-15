@@ -11,6 +11,7 @@ const initialState = {
   loading: false,
   loadingCreatures: false,
   speciesData: [],
+  loadingExport: false,
 };
 
 export default (state = initialState, action = {}) => {
@@ -31,6 +32,11 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         loadingCreatures: true,
+      };
+    case `${types.EXPORT_DIVE_CSV}_PENDING`:
+      return {
+        ...state,
+        loadingExport: true,
       };
 
     case `${types.FETCH_MONTHLY_DIVE}_REJECTED`:
@@ -102,6 +108,13 @@ export default (state = initialState, action = {}) => {
         ...state,
         loading: false,
         data: state.data.filter((dive) => dive.id !== action.meta.id),
+      };
+
+    case `${types.EXPORT_DIVE_CSV}_REJECTED`:
+    case `${types.EXPORT_DIVE_CSV}_FULFILLED`:
+      return {
+        ...state,
+        loadingExport: false,
       };
 
     default:

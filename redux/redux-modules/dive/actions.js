@@ -1,6 +1,10 @@
 import { types } from "./types";
 import api from "../api/dive";
 
+import axios from "axios";
+import { download } from "src/helpers/helper";
+import queryString from "query-string";
+
 export const fetchMonthlyDives = (filters) => ({
   type: types.FETCH_MONTHLY_DIVE,
   payload: api.fetchMonthlyDives(filters),
@@ -47,4 +51,17 @@ export const deleteDive = (id) => ({
   type: types.DELETE_DIVE,
   payload: api.deleteDive(id),
   meta: { id, globalError: true },
+});
+
+export const exportDiveCsv = (filters = {}) => ({
+  type: types.EXPORT_DIVE_CSV,
+  payload: api.exportDiveCsv(filters).then(
+    (response) => {
+      download(response, "dive-reporter.xlsx");
+    },
+    (error) => {
+      return error.data;
+    }
+  ),
+  meta: { globalError: true },
 });
