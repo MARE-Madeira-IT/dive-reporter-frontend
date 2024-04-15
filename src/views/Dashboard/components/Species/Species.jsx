@@ -13,6 +13,7 @@ function Species() {
         <Divider orientation="left">
           <div className={styles.title}>Species</div>
         </Divider>
+        <h3>Click for more information</h3>
       </Col>
       <Col xs={24} align="center">
         <SpeciesGrid setRecord={setRecord} />

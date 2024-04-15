@@ -4,7 +4,7 @@ import ParticipateForm from "./components/ParticipateForm";
 
 function Participate() {
   return (
-    <Row style={{ marginTop: "50px" }}>
+    <Row style={{ marginTop: "50px" }} align="middle">
       <Col xs={24} lg={12} align="center" style={{ padding: "10px" }}>
         <ParticipateInfo />
       </Col>

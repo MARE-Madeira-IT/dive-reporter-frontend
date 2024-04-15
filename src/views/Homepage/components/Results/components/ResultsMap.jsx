@@ -102,6 +102,7 @@ function ResultsMap(props) {
   ];
 
   const onDateChange = (value) => {
+    if (!value) return setDiveFilters({ ...diveFilters, date: null });
     setDiveFilters({
       ...diveFilters,
       date: [value, moment().format("YYYY-MM-DD")], //from -> to

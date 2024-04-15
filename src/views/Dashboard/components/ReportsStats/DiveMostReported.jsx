@@ -66,7 +66,10 @@ function DiveMostReported(props) {
   };
 
   const dateOptions = [
-    { value: null, label: "All time" },
+    {
+      value: null,
+      label: "All time",
+    },
     {
       value: moment().subtract(1, "week").format("YYYY-MM-DD"),
       label: "Last week",
@@ -90,6 +93,10 @@ function DiveMostReported(props) {
   ];
 
   const onDateChange = (value) => {
+    if (!value) {
+      setFilters({});
+      return;
+    }
     setFilters({
       date: [value, moment().format("YYYY-MM-DD")], //from -> to
     });
