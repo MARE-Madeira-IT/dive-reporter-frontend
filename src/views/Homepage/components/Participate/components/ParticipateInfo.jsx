@@ -21,30 +21,6 @@ function ParticipateInfo() {
         <p>
           You can contact us and we will work with you to build a monitoring
           program based on our platform and using our Dive Reporter mobile app.
-          To build a custom-tailored Dive Reporter monitoring program with us,
-          you will need to:
-        </p>
-        <p>
-          &#x2022; Establish a spatial scale and geographic boundaries identify
-          diving spots. We recommend you include all regular dive spots used by
-          participating dive centers and operators.
-        </p>
-        <p>
-          &#x2022; Identify Diving centers and dive operators in your area that
-          would be willing to participate. Our framework is designed to engage
-          dive centers and operators as participatory stakeholders.
-        </p>
-        <p>
-          &#x2022; Work with participating dive centers and operators to
-          identify diving spots to be included in your monitoring program. We
-          recommend you include all regular dive spots used by participating
-          dive centers and operators.
-        </p>
-        <p>
-          &#x2022; Identify a maximum of 24 species of interest. We recommend
-          using expert opinion and focusing on easily identifiable species that
-          can be used as indicators (e.g. protected species, habitat builders,
-          commercially valuable, non-native or invasive species)
         </p>
       </div>
     </>
