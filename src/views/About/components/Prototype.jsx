@@ -7,8 +7,8 @@ function Prototype() {
       <Col xs={24}>
         <h1>Prototype</h1>
       </Col>
-      <Col xs={24} md={12}>
-        <img src="/assets/placeholder.jpg" />
+      <Col xs={24} md={12} align="middle">
+        <img src="/assets/image/about/oldLayout.png" />
       </Col>
       <Col xs={24} md={12}>
         <p>

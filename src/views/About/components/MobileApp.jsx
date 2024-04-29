@@ -7,18 +7,6 @@ function MobileApp() {
       <Col xs={24}>
         <h1>Mobile App</h1>
       </Col>
-      <Col xs={12} md={6}>
-        <img src="/assets/placeholder.jpg" />
-      </Col>
-      <Col xs={12} md={6}>
-        <img src="/assets/placeholder.jpg" />
-      </Col>
-      <Col xs={12} md={6}>
-        <img src="/assets/placeholder.jpg" />
-      </Col>
-      <Col xs={12} md={6}>
-        <img src="/assets/placeholder.jpg" />
-      </Col>
       <Col xs={24}>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
@@ -43,6 +31,18 @@ function MobileApp() {
           vel felis id ligula elementum dignissim quis sed leo. Lorem ipsum
           dolor sit amet, consectetur adipiscing elit.
         </p>
+      </Col>
+      <Col xs={12} md={6}>
+        <img src="/assets/image/about/firstPage.png" />
+      </Col>
+      <Col xs={12} md={6}>
+        <img src="/assets/image/about/secondPage.png" />
+      </Col>
+      <Col xs={12} md={6}>
+        <img src="/assets/image/about/thirdPage.png" />
+      </Col>
+      <Col xs={12} md={6}>
+        <img src="/assets/image/about/fourthPage.png" />
       </Col>
     </Row>
   );
