@@ -3,12 +3,12 @@ import styles from "../Participate.module.css";
 function ParticipateInfo() {
   return (
     <>
-      <h1 style={{ fontSize: "3rem" }}>Join US!</h1>
+      <h1 style={{ fontSize: "3rem" }}>Join us!</h1>
       <div className={styles.mainContentContainer} id="participate">
         <p>
           Are you a dive center or dive operator in Madeira? Do you want to join
           our network and contribute to marine biodiversity monitoring? Contact
-          us and we will help you join Dive Reporter monitoring program in
+          us and we will help you join the Dive Reporter monitoring program in
           Madeira.
         </p>
         <p>
@@ -20,7 +20,7 @@ function ParticipateInfo() {
         </p>
         <p>
           You can contact us and we will work with you to build a monitoring
-          program based on our platform and using our Dive Reporter mobile app.
+          program based on our platform and use our Dive Reporter mobile app.
         </p>
       </div>
     </>
