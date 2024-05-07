@@ -9,7 +9,7 @@ import styles from "./Reports.module.css";
 const { RangePicker } = DatePicker;
 
 function ReportsFilters(props) {
-  const { setFilters, filters, creaturesData, divingSpotsData } = props;
+  const { setFilters, filters, creaturesData, divingSpotsData, user } = props;
   const [creatureOptions, setCreatureOptions] = useState(null);
   const [divingSpotsOptions, setDivingSpsotsOptions] = useState(null);
 
@@ -97,11 +97,13 @@ function ReportsFilters(props) {
           }}
         />
       </Col>
-      <Col xs={4} sm={3} align="start">
-        <Button onClick={handleDownload}>
-          <DownloadOutlined />
-        </Button>
-      </Col>
+      {user.admin == 1 && (
+        <Col xs={4} sm={3} align="start">
+          <Button onClick={handleDownload}>
+            <DownloadOutlined />
+          </Button>
+        </Col>
+      )}
     </Row>
   );
 }
@@ -117,6 +119,7 @@ const mapStateToProps = (state) => {
   return {
     creaturesData: state.dive.creaturesData,
     divingSpotsData: state.divingSpots.DivingSpotSelector,
+    user: state.auth.user,
   };
 };
 
