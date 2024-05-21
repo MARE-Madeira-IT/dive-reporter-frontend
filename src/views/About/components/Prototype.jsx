@@ -1,5 +1,6 @@
 import "../About.module.css";
 import { Row, Col } from "antd";
+import React from 'react'
 
 function Prototype() {
     return (

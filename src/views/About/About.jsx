@@ -5,6 +5,7 @@ import Prototype from "./components/Prototype";
 import Validation from "./components/Validation";
 import MobileApp from "./components/MobileApp";
 import Kiosk from "./components/Kiosk";
+import React from 'react'
 
 function About() {
     return (

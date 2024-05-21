@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React from 'react'
 import styles from "./App.module.css";
 //views
 import Navbar from "src/views/Navbar/Navbar";
@@ -11,32 +12,32 @@ import PrivateRoute from "src/views/Helpers/PrivateRoute";
 import About from "src/views/About/About";
 
 function App() {
-  return (
-    <div className={styles.app}>
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-        </Routes>
-        <div className={styles.mainContent}>
-          <Routes>
-            <Route path="/about" element={<About />} />
-            <Route
-              path="/dashboard"
-              element={
-                <PrivateRoute>
-                  <Dashboard />
-                </PrivateRoute>
-              }
-            />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-          </Routes>
-          <Footer />
+    return (
+        <div className={styles.app}>
+            <BrowserRouter>
+                <Navbar />
+                <Routes>
+                    <Route path="/" element={<Homepage />} />
+                </Routes>
+                <div className={styles.mainContent}>
+                    <Routes>
+                        <Route path="/about" element={<About />} />
+                        <Route
+                            path="/dashboard"
+                            element={
+                                <PrivateRoute>
+                                    <Dashboard />
+                                </PrivateRoute>
+                            }
+                        />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/register" element={<Register />} />
+                    </Routes>
+                    <Footer />
+                </div>
+            </BrowserRouter>
         </div>
-      </BrowserRouter>
-    </div>
-  );
+    );
 }
 
 export default App;
