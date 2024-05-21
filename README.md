@@ -1,40 +1,12 @@
-# Development
+# Dive Reporter website
 
-Recommended to use docker for development. The following commands allow for the development of the application without the need to install any dependencies.
+Repository with the code for the Dive Reporter website, the website is where users can check their data from the mobile app and also gives a brief introduction to what the Dive Reporter program is and its results. It is to work not only as part of the program but also as part of outreach.
 
-```sh
-docker build -t dive-reporter-frontend .
-docker run -e WATCHPACK_POLLING=true -v ${pwd}\src:/app/src:ro  -d -p 3000:3000 --name dive-reporter-frontend dive-reporter-frontend 
-```
+The website is developed in React v18.2.0, node v20.11.0 and npm v10.2.4. The database and API are the ones on wave-labs (PHP v7.1.30, Composer v2.1.9 and MariaDB 10.3.16).
 
-In case docker is not used, the following are needed:
+Built using vite.
 
-Node v20.11.0
-Npm v10.2.4
-
-Then: 
-
-
-```sh
-npm install
-npm run dev
-```
-
-
-
-# Production
-
-For building and testing the production build you can run: 
-
-```sh
-npm run build
-npm run preview
-```
-
-To deploy you just need to run:
-
-```sh
-npm run build
-```
+For development run the command "npm run dev".
+For build run the command "npm run build".
 
 And then the /dist folder will have the build which you can upload (e.g netlify)
