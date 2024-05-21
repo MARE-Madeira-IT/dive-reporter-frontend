@@ -7,5 +7,4 @@ The website is developed in React v18.2.0, node v20.11.0 and npm v10.2.4. The da
 Built using vite.
 
 For development run the command "npm run dev".
-For build run the command "npm run build". 
-
+For build run the command "npm run build".
