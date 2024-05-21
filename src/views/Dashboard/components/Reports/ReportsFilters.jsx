@@ -1,6 +1,7 @@
-import { Col, Row, Select, DatePicker } from "antd";
+import { Col, Row, Select, DatePicker, Button } from "antd";
+import { DownloadOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
-import { fetchDiveCreatures } from "redux_modules/dive/actions";
+import { fetchDiveCreatures, exportDiveCsv } from "redux_modules/dive/actions";
 import { connect } from "react-redux";
 import moment from "moment/moment";
 import styles from "./Reports.module.css";
@@ -8,7 +9,7 @@ import styles from "./Reports.module.css";
 const { RangePicker } = DatePicker;
 
 function ReportsFilters(props) {
-  const { setFilters, filters, creaturesData, divingSpotsData } = props;
+  const { setFilters, filters, creaturesData, divingSpotsData, user } = props;
   const [creatureOptions, setCreatureOptions] = useState(null);
   const [divingSpotsOptions, setDivingSpsotsOptions] = useState(null);
 
@@ -46,13 +47,19 @@ function ReportsFilters(props) {
   const divingSpotsFilterOption = (input, option) =>
     (option?.label ?? "").toLowerCase().includes(input.toLowerCase());
 
+  //download function
+
+  const handleDownload = () => {
+    props.exportDiveCsv(filters);
+  };
+
   return (
     <Row
       className={styles.filterRow}
       gutter={[16, 16]}
       justify={"space-between"}
     >
-      <Col xs={24} sm={8} align="start">
+      <Col xs={24} sm={7} align="start">
         <Select
           style={{ width: "100%" }}
           showSearch
@@ -64,7 +71,7 @@ function ReportsFilters(props) {
           options={creatureOptions}
         />
       </Col>
-      <Col xs={24} sm={8} align="start">
+      <Col xs={24} sm={7} align="start">
         <Select
           style={{ width: "100%" }}
           showSearch
@@ -76,7 +83,7 @@ function ReportsFilters(props) {
           options={divingSpotsOptions}
         />
       </Col>
-      <Col xs={24} sm={8} align="start">
+      <Col xs={24} sm={7} align="start">
         <RangePicker
           style={{ width: "100%" }}
           onChange={(date) => {
@@ -90,6 +97,13 @@ function ReportsFilters(props) {
           }}
         />
       </Col>
+      {user.admin == 1 && (
+        <Col xs={4} sm={3} align="start">
+          <Button onClick={handleDownload}>
+            <DownloadOutlined />
+          </Button>
+        </Col>
+      )}
     </Row>
   );
 }
@@ -97,6 +111,7 @@ function ReportsFilters(props) {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchDiveCreatures: (filters) => dispatch(fetchDiveCreatures(filters)),
+    exportDiveCsv: (filters) => dispatch(exportDiveCsv(filters)),
   };
 };
 
@@ -104,6 +119,7 @@ const mapStateToProps = (state) => {
   return {
     creaturesData: state.dive.creaturesData,
     divingSpotsData: state.divingSpots.DivingSpotSelector,
+    user: state.auth.user,
   };
 };
 

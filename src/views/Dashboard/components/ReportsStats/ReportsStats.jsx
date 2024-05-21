@@ -11,10 +11,10 @@ function ReportsStats() {
           <div className={styles.title}>My Dives</div>
         </Divider>
       </Col>
-      <Col xs={24} lg={12}>
+      <Col xs={24} lg={12} style={{ marginBottom: "5em" }}>
         <DivesMonthlyGraph />
       </Col>
-      <Col xs={24} lg={12}>
+      <Col xs={24} lg={12} style={{ marginBottom: "5em" }}>
         <DiveMostReported />
       </Col>
     </Row>

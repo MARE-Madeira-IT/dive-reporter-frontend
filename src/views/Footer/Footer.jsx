@@ -12,15 +12,12 @@ import styles from "./Footer.module.css";
 
 const logoPaths = [
   "logoMARE",
+  "logoArnet",
   "logoArditi",
   "logoWave",
-  "logoTigerwhale",
-  "logoEU",
   "logoFCT",
   "logoMac",
-  "logoClimarest",
-  "logoCleanAtlantic",
-  "logoPlasmar",
+  "logoEU",
 ];
 
 function Footer() {
@@ -28,17 +25,22 @@ function Footer() {
     <div className={styles.container}>
       <Divider style={{ borderTop: "1px solid grey" }} />
 
-      <Row gutter={[16, 16]} justify={"space-between"} align={"middle"}>
+      <Row gutter={[16, 16]} justify={"space-around"} align={"middle"}>
         {logoPaths.map((element, index) => (
           <Col key={index} lg={2} md={2} sm={3} xs={4}>
-            <Link className={styles.logo}>
-              <img src={`/assets/logos/${element}.png`} />
-            </Link>
+            <div className={styles.logos}>
+              <img
+                src={`/assets/logos/${element}.webp`}
+                alt="Logos of funders"
+              />
+            </div>
           </Col>
         ))}
       </Row>
 
-      <div className={styles.description}>©2024 | MARE-Madeira</div>
+      <div className={styles.description}>
+        ©{new Date().getFullYear()} | MARE-Madeira
+      </div>
       <div className={styles.description}>Contact: team@wave-labs.org</div>
       <Row className={styles.socialLogos} align={"middle"} gutter={16}>
         <Link to={"https://mare-madeira.pt/"} target="_blank">

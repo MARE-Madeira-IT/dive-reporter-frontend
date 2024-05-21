@@ -1,0 +1,33 @@
+.container {
+  scroll-margin-top: 70px;
+  min-height: 200px;
+}
+
+.speciesImages {
+  aspect-ratio: 1/1;
+  width: 100%;
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.7);
+}
+
+.speciesModal {
+  width: 100%;
+  max-width: 750px;
+}
+
+.speciesInformation p {
+  font-size: 1rem;
+}
+
+.graphContainer {
+  aspect-ratio: 1/1;
+  width: 100%;
+}
+
+.title {
+  font-size: 2rem;
+}
+
+.modalFooterLogos {
+  width: 100%;
+  padding: 10px;
+}

@@ -29,3 +29,25 @@ export function updateDrawerDimensions(window) {
 
   return width;
 }
+
+export function getBase64(img, callback) {
+  const reader = new FileReader();
+  reader.addEventListener("load", () => callback(reader.result));
+  reader.readAsDataURL(img);
+}
+
+export function dummyRequest({ file, onSuccess }) {
+  setTimeout(() => {
+    onSuccess("ok");
+  }, 0);
+}
+
+
+export function download(response, filename) {
+  const url = window.URL.createObjectURL(new Blob([response.data]));
+  const link = document.createElement("a");
+  link.href = url;
+  link.setAttribute("download", filename);
+  document.body.appendChild(link);
+  link.click();
+};

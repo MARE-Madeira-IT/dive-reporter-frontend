@@ -8,3 +8,5 @@ Built using vite.
 
 For development run the command "npm run dev".
 For build run the command "npm run build".
+
+And then the /dist folder will have the build which you can upload (e.g netlify)

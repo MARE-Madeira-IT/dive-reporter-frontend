@@ -11,7 +11,7 @@ function DiveMontlyGraph(props) {
   var labels = [];
 
   useEffect(() => {
-    props.fetchMonthlyDives();
+    props.fetchMonthlyDives({ self: true });
   }, []);
 
   var monthName = new Array(
@@ -57,16 +57,17 @@ function DiveMontlyGraph(props) {
     labels,
     datasets: [
       {
-        label: "Number of dives per month",
+        label: "Number of reports per month",
         data: data,
         borderColor: "rgb(0, 0, 255)",
-        backgroundColor: "rgba(0, 0, 255, 0.5)",
+        backgroundColor: "rgba(0, 0, 255, 0.3)",
+        fill: "origin",
       },
     ],
   };
 
   return (
-    <div style={{ maxHeight: "500px", marginBottom: "5em" }}>
+    <div style={{ height: "400px" }}>
       <div className={styles.title}> Reports per month </div>
       <Line options={options} data={info} />
     </div>
@@ -75,7 +76,7 @@ function DiveMontlyGraph(props) {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchMonthlyDives: () => dispatch(fetchMonthlyDives()),
+    fetchMonthlyDives: (filters) => dispatch(fetchMonthlyDives(filters)),
   };
 };
 

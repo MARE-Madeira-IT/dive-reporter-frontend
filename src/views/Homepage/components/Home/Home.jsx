@@ -22,9 +22,10 @@ function Home() {
         className={styles.backgroundImage}
         src={
           windowWidth > 600
-            ? "/assets/landing16_9.png"
-            : "/assets/landing9_16.png"
+            ? "/assets/landing16_9.webp"
+            : "/assets/landing9_16.webp"
         }
+        alt="Landing page image of a diver"
       />
       <div className={styles.textContainer}>
         <h1>Dive Reporter</h1>

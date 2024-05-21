@@ -1,10 +1,12 @@
 .container {
   scroll-margin-top: 70px;
+  min-height: 200px;
 }
 
 .mapContainer {
   width: 100%;
   aspect-ratio: 1/1;
+  height: 100%;
   max-height: 400px;
   box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.3);
   border-radius: 20px;
@@ -30,4 +32,11 @@
   position: absolute;
   top: 0;
   right: 0;
+}
+
+.containerGraph {
+  height: 100%;
+  max-height: 400px;
+  margin-bottom: "5em";
+  padding: 10px;
 }
