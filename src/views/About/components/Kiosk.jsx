@@ -10,16 +10,7 @@ function Kiosk() {
             </Col>
             <Col xs={24}>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
-                    porttitor justo at mattis facilisis. Vestibulum pharetra nulla odio,
-                    vel dignissim lacus interdum a. Aliquam dignissim mi at metus commodo,
-                    vel fermentum turpis commodo. Nulla facilisi. Vestibulum rutrum,
-                    lectus sit amet congue blandit, dui dui laoreet est, sed consequat
-                    ligula libero sed tellus. Duis porttitor tincidunt rutrum. Nunc
-                    rhoncus ipsum a arcu semper aliquam. Nunc vulputate nisi vel dui
-                    lacinia mattis. Ut finibus lacinia pulvinar. Etiam et congue ligula,
-                    id laoreet turpis. Aliquam vestibulum vel felis eget consequat. Morbi
-                    et sollicitudin nisi, nec bibendum leo. Vestibulum erat urna, ultrices
+                    Work in progress... Check back for updates when our kiosks are deploy ready.
                 </p>
             </Col>
             <Col xs={12} md={6}>
@@ -29,13 +20,23 @@ function Kiosk() {
                 <img src="/assets/image/about/tabletHolder.jpeg" />
             </Col>
             <Col xs={24}>
-                <video controls>
+                <iframe
+                    width="560"
+                    height="315"
+                    src="https://www.youtube.com/embed/NOcFrJQawCk?si=wqE7zYHmji5HUKRv"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen
+                />
+
+                {/* <video controls>
                     <source
                         src="https://www.youtube.com/watch?v=NOcFrJQawCk"
                         type="video/mp4"
                     />
                     Your browser does not support the video tag.
-                </video>
+                </video> */}
             </Col>
         </Row>
     );

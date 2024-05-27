@@ -9,7 +9,7 @@ function Team() {
                 <h1>Our team</h1>
             </Col>
             <Col xs={24} md={12}>
-                <img src="/assets/placeholder.jpg" />
+                <img src="/assets/image/about/team.jpg" />
             </Col>
             <Col xs={24} md={12}>
                 <p>

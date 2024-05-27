@@ -17,11 +17,12 @@ function About() {
                 <Prototype />
             </Col>
             <Col xs={24} align="center">
-                <Validation />
-            </Col>
-            <Col xs={24} align="center">
                 <MobileApp />
             </Col>
+            <Col xs={24} align="center">
+                <Validation />
+            </Col>
+
             <Col xs={24} align="center">
                 <Kiosk />
             </Col>

@@ -6,32 +6,21 @@ function MobileApp() {
     return (
         <Row gutter={16}>
             <Col xs={24}>
-                <h1>Mobile App</h1>
+                <h1>The new mobile App</h1>
             </Col>
-            <Col xs={24}>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
-                    porttitor justo at mattis facilisis. Vestibulum pharetra nulla odio,
-                    vel dignissim lacus interdum a. Aliquam dignissim mi at metus commodo,
-                    vel fermentum turpis commodo. Nulla facilisi. Vestibulum rutrum,
-                    lectus sit amet congue blandit, dui dui laoreet est, sed consequat
-                    ligula libero sed tellus. Duis porttitor tincidunt rutrum. Nunc
-                    rhoncus ipsum a arcu semper aliquam. Nunc vulputate nisi vel dui
-                    lacinia mattis. Ut finibus lacinia pulvinar. Etiam et congue ligula,
-                    id laoreet turpis. Aliquam vestibulum vel felis eget consequat. Morbi
-                    et sollicitudin nisi, nec bibendum leo. Vestibulum erat urna, ultrices
-                    non tellus ut, facilisis pharetra tellus. Ut ornare gravida erat vitae
-                    commodo. Integer luctus nisi felis. Integer vehicula mattis turpis,
-                    quis fermentum felis sollicitudin nec. Nulla nulla dolor, vehicula a
-                    libero ut, volutpat dignissim est. Vivamus accumsan ut sapien sed
-                    vulputate. Sed porta ullamcorper leo, vel molestie arcu suscipit quis.
-                    In sit amet elementum nisi. Nulla quis auctor neque, suscipit blandit
-                    urna. In hac habitasse platea dictumst. Duis feugiat odio nisi, sit
-                    amet volutpat augue fringilla nec. Vestibulum bibendum condimentum
-                    vestibulum. Praesent pharetra erat vitae sem tristique porttitor. Ut
-                    vel felis id ligula elementum dignissim quis sed leo. Lorem ipsum
-                    dolor sit amet, consectetur adipiscing elit.
-                </p>
+            <Col xs={24} style={{ marginBottom: "30px" }}>
+                <Row gutter={32}>
+                    <Col xs={24} md={12}>
+                        <p>Currently hosted by ARDITI – the Regional Agency for the Development of Research, Technology and Innovation, MARE-Madeira R&D team has grown and integrated a <a href="https://mare-madeira.pt/marine-technology/" target="__blank">Marine Technology & AI</a> research group that further developed Dive Reporter.                        </p>
+                        <p>Within <a href="https://climarest.eu/" target="__blank">CLIMAREST</a> project Dive Reporter current version has been further developed and designed with stakeholder input and has updated the design, the interface and the list of target species. The new mobile app will integrate CLIMAREST digital toolbox and was developed following the latest Android and iOS guidelines and is available both at the Google Play Store and Apple App Store. The app is optimized to work both on mobile and tablet interfaces.</p>
+                    </Col>
+                    <Col xs={24} md={12}>
+                        <p>
+                            The main goal of the app is to engage local Dive Centers and Dive Operators to use the app by integrating a query in the post-dive debriefing of SCUBA divers and report sightings of target species/taxa. The application allows the dive guides to preselect the number of divers, dive time and the selected dive spot, as to quantify sampling effort. After each dive, the dive guide asks diving participants to report sightings and abundance of the selected species by first selecting the species of desire, and then selecting the number indicating the abundance. The same process can be made for other species and is repeated by asking the whole group to agree on the consensus. Once all species are checked, the report is created and automatically updated to our servers at <a href="https://wave-labs.org/" target="__blank">Wave Labs</a>/<a href="https://mare-madeira.pt/" target="__blank">MARE-Madeira</a>.
+                        </p>
+                    </Col>
+
+                </Row>
             </Col>
             <Col xs={12} md={6}>
                 <img src="/assets/image/about/firstPage.png" />

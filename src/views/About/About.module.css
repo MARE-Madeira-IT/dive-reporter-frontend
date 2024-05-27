@@ -1,11 +1,12 @@
 .mainContentContainer {
     h1 {
         font-size: 3rem;
+        margin-top: 50px;
     }
 
     p {
         font-size: 1rem;
-        text-align: left;
+        text-align: justify;
     }
 
     img {
@@ -29,18 +30,13 @@
     }
 
     a {
-
-
-
-
-
         margin-top: 50px;
     }
 
-    video {
+    iframe {
         width: 100%;
-        max-width: 400px;
-        height: auto;
+        max-width: 720px;
+        min-height: 50vh;
         padding: 20px;
     }
 }
