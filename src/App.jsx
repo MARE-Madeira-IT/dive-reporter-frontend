@@ -1,4 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { createBrowserHistory } from "history";
+
 import React from 'react'
 import styles from "./App.module.css";
 //views
@@ -11,10 +13,12 @@ import Dashboard from "src/views/Dashboard/Dashboard";
 import PrivateRoute from "src/views/Helpers/PrivateRoute";
 import About from "src/views/About/About";
 
+export const history = createBrowserHistory();
+
 function App() {
     return (
         <div className={styles.app}>
-            <BrowserRouter>
+            <BrowserRouter history={history}>
                 <Navbar />
                 <Routes>
                     <Route path="/" element={<Homepage />} />
