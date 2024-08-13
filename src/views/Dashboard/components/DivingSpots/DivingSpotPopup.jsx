@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import React from 'react'
 
 const Container = styled.div`
   padding: 4px 0px;
@@ -14,21 +15,21 @@ const Content = styled.p`
 `;
 
 function DivingSpotPopup(props) {
-  const { divingSpot } = props;
-  return (
-    <Container>
-      <Content>
-        Name: <span>{divingSpot.name}</span>
-      </Content>
-      <Content>
-        Coordinates:
-        <span>{divingSpot.latitude + ", " + divingSpot.longitude}</span>
-      </Content>
-      <Content>
-        Protection: <span>{divingSpot.protection}</span>
-      </Content>
-    </Container>
-  );
+    const { divingSpot } = props;
+    return (
+        <Container>
+            <Content>
+                Name: <span>{divingSpot.name}</span>
+            </Content>
+            <Content>
+                Coordinates:
+                <span>{divingSpot.latitude + ", " + divingSpot.longitude}</span>
+            </Content>
+            <Content>
+                Protection: <span>{divingSpot.protection}</span>
+            </Content>
+        </Container>
+    );
 }
 
 export default DivingSpotPopup;

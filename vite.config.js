@@ -10,7 +10,7 @@ export default defineConfig({
             redux_modules: "/redux/redux-modules",
         },
     },
-    base: "/",
+    base: "./",
     preview: {
         port: 3000,
         strictPort: true,

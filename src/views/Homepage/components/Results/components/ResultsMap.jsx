@@ -3,230 +3,231 @@ import { Suspense, useEffect, useMemo, useState } from "react";
 import Map, { Source, Layer } from "react-map-gl";
 import { SettingFilled } from "@ant-design/icons";
 import {
-  fetchDiveCreatures,
-  fetchDiveCoords,
+    fetchDiveCreatures,
+    fetchDiveCoords,
 } from "redux_modules/dive/actions";
 import { connect } from "react-redux";
 import moment from "moment";
 import styles from "../Results.module.css";
+import React from 'react'
 
 const SettingsIconStyle = {
-  fontSize: "2rem",
-  position: "absolute",
-  top: "0",
-  right: "0",
-  padding: "10px",
+    fontSize: "2rem",
+    position: "absolute",
+    top: "0",
+    right: "0",
+    padding: "10px",
 };
 
 const layerStyle = {
-  id: "point",
-  type: "heatmap",
-  paint: {
-    "heatmap-radius": 15,
-    "heatmap-color": [
-      "interpolate",
-      ["linear"],
-      ["heatmap-density"],
-      0,
-      "rgba(255, 0, 0, 0)",
-      0.1,
-      "rgba(255, 130, 130, 0.4)",
+    id: "point",
+    type: "heatmap",
+    paint: {
+        "heatmap-radius": 15,
+        "heatmap-color": [
+            "interpolate",
+            ["linear"],
+            ["heatmap-density"],
+            0,
+            "rgba(255, 0, 0, 0)",
+            0.1,
+            "rgba(255, 130, 130, 0.4)",
 
-      0.5,
-      "rgba(255, 180, 180, 0.8)",
+            0.5,
+            "rgba(255, 180, 180, 0.8)",
 
-      1,
-      "rgba(255, 230, 230, 0.9)",
-    ],
-  },
+            1,
+            "rgba(255, 230, 230, 0.9)",
+        ],
+    },
 };
 
 function ResultsMap(props) {
-  const {
-    creaturesData,
-    coordinatesData,
-    loading,
-    diveFilters,
-    setDiveFilters,
-  } = props;
+    const {
+        creaturesData,
+        coordinatesData,
+        loading,
+        diveFilters,
+        setDiveFilters,
+    } = props;
 
-  const [creatureImage, setCreatureImage] = useState(null);
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const [creatureOptions, setCreatureOptions] = useState(null);
+    const [creatureImage, setCreatureImage] = useState(null);
+    const [drawerOpen, setDrawerOpen] = useState(false);
+    const [creatureOptions, setCreatureOptions] = useState(null);
 
-  //Creatures
-  useEffect(() => {
-    props.fetchDiveCreatures({ source: "DIVE_REPORTER" });
-  }, []);
+    //Creatures
+    useEffect(() => {
+        props.fetchDiveCreatures({ source: "DIVE_REPORTER" });
+    }, []);
 
-  useEffect(() => {
-    let options = [{ value: null, label: "Species" }];
-    creaturesData.map((creature) => {
-      options.push({
-        value: creature.id,
-        label: creature.name,
-      });
-    });
-    setCreatureOptions(options);
-  }, [creaturesData]);
+    useEffect(() => {
+        let options = [{ value: null, label: "Species" }];
+        creaturesData.map((creature) => {
+            options.push({
+                value: creature.id,
+                label: creature.name,
+            });
+        });
+        setCreatureOptions(options);
+    }, [creaturesData]);
 
-  const creatureFilterOption = (input, option) =>
-    (option?.label ?? "").toLowerCase().includes(input.toLowerCase());
+    const creatureFilterOption = (input, option) =>
+        (option?.label ?? "").toLowerCase().includes(input.toLowerCase());
 
-  const onCreatureChange = (creature) => {
-    if (creature) {
-      setCreatureImage(`/assets/image/dive/${creature}.webp`);
-      setDiveFilters({ ...diveFilters, creature: creature });
-    } else {
-      setCreatureImage(null);
-      setDiveFilters({ ...diveFilters, creature: null });
-    }
-  };
+    const onCreatureChange = (creature) => {
+        if (creature) {
+            setCreatureImage(`/assets/image/dive/${creature}.webp`);
+            setDiveFilters({ ...diveFilters, creature: creature });
+        } else {
+            setCreatureImage(null);
+            setDiveFilters({ ...diveFilters, creature: null });
+        }
+    };
 
-  //dates
+    //dates
 
-  const dateOptions = [
-    { value: null, label: "All time" },
-    {
-      value: moment().subtract(3, "months").format("YYYY-MM-DD"),
-      label: "Last 3 months",
-    },
-    {
-      value: moment().subtract(6, "months").format("YYYY-MM-DD"),
-      label: "Last 6 months",
-    },
-    {
-      value: moment().subtract(12, "months").format("YYYY-MM-DD"),
-      label: "Last year",
-    },
-  ];
+    const dateOptions = [
+        { value: null, label: "All time" },
+        {
+            value: moment().subtract(3, "months").format("YYYY-MM-DD"),
+            label: "Last 3 months",
+        },
+        {
+            value: moment().subtract(6, "months").format("YYYY-MM-DD"),
+            label: "Last 6 months",
+        },
+        {
+            value: moment().subtract(12, "months").format("YYYY-MM-DD"),
+            label: "Last year",
+        },
+    ];
 
-  const onDateChange = (value) => {
-    if (!value) return setDiveFilters({ ...diveFilters, date: null });
-    setDiveFilters({
-      ...diveFilters,
-      date: [value, moment().format("YYYY-MM-DD")], //from -> to
-    });
-  };
+    const onDateChange = (value) => {
+        if (!value) return setDiveFilters({ ...diveFilters, date: null });
+        setDiveFilters({
+            ...diveFilters,
+            date: [value, moment().format("YYYY-MM-DD")], //from -> to
+        });
+    };
 
-  //dives
+    //dives
 
-  useEffect(() => {
-    props.fetchDiveCoords(diveFilters);
-  }, [diveFilters]);
+    useEffect(() => {
+        props.fetchDiveCoords(diveFilters);
+    }, [diveFilters]);
 
-  const geoJsons = useMemo(() => {
-    let newCoordinates = [];
-    coordinatesData.map((element) => {
-      newCoordinates.push([element.longitude, element.latitude]);
-    });
-    return (
-      <Source
-        key={1}
-        type="geojson"
-        data={{
-          type: "FeatureCollection",
-          features: [
-            {
-              type: "Feature",
-              geometry: {
-                type: "MultiPoint",
-                coordinates: newCoordinates,
-              },
-            },
-          ],
-        }}
-      >
-        <Layer key={2} {...layerStyle} />
-      </Source>
-    );
-  }, [coordinatesData]);
-
-  return (
-    <Row id="results" className={styles.container}>
-      <Col xs={24}>
-        <div className={styles.mapContainer}>
-          <Map
-            mapboxAccessToken="pk.eyJ1IjoidGlnZXJ3aGFsZSIsImEiOiJjanBncmNscnAwMWx3M3ZxdDF2cW8xYWZvIn0.LVgciVtYclOed_hZ9oXY2g"
-            initialViewState={{
-              latitude: 32.749234,
-              longitude: -16.986946,
-              zoom: 9,
-            }}
-            style={{
-              height: "100%",
-              width: "100%",
-              borderRadius: "20px",
-              position: "absolute",
-            }}
-            mapStyle="mapbox://styles/tigerwhale/cjpgrt1sccjs92sqjfnuixnxc"
-          >
-            {loading && (
-              <Spin
-                style={{
-                  position: "absolute",
-                  top: "50%",
-                  left: "50%",
+    const geoJsons = useMemo(() => {
+        let newCoordinates = [];
+        coordinatesData.map((element) => {
+            newCoordinates.push([element.longitude, element.latitude]);
+        });
+        return (
+            <Source
+                key={1}
+                type="geojson"
+                data={{
+                    type: "FeatureCollection",
+                    features: [
+                        {
+                            type: "Feature",
+                            geometry: {
+                                type: "MultiPoint",
+                                coordinates: newCoordinates,
+                            },
+                        },
+                    ],
                 }}
-              />
-            )}
-            {!loading && geoJsons}
-          </Map>
-          <div className={styles.creatureOverlay}>
-            {creatureImage && (
-              <img src={creatureImage} alt="Creature which was selected" />
-            )}
-          </div>
-          <div className={styles.settingsOverlay}>
-            <Suspense fallback={<h1>Loading species</h1>}>
-              <Drawer
-                title="Results filters"
-                onClose={() => setDrawerOpen(false)}
-                open={drawerOpen}
-                getContainer={false}
-                mask={false}
-              >
-                <Select
-                  style={{ width: "100%", marginBottom: "20px" }}
-                  showSearch
-                  placeholder="Select a species"
-                  onChange={onCreatureChange}
-                  filterOption={creatureFilterOption}
-                  options={creatureOptions}
-                />
-                <Select
-                  style={{ width: "100%", marginBottom: "20px" }}
-                  defaultValue={{ value: null, label: "All time" }}
-                  placeholder="Select a time interval"
-                  onChange={onDateChange}
-                  options={dateOptions}
-                />
-              </Drawer>
-            </Suspense>
-            <SettingFilled
-              style={SettingsIconStyle}
-              onClick={() => setDrawerOpen(true)}
-            />
-          </div>
-        </div>
-      </Col>
-    </Row>
-  );
+            >
+                <Layer key={2} {...layerStyle} />
+            </Source>
+        );
+    }, [coordinatesData]);
+
+    return (
+        <Row id="results" className={styles.container}>
+            <Col xs={24}>
+                <div className={styles.mapContainer}>
+                    <Map
+                        mapboxAccessToken="pk.eyJ1IjoidGlnZXJ3aGFsZSIsImEiOiJjanBncmNscnAwMWx3M3ZxdDF2cW8xYWZvIn0.LVgciVtYclOed_hZ9oXY2g"
+                        initialViewState={{
+                            latitude: 32.749234,
+                            longitude: -16.986946,
+                            zoom: 9,
+                        }}
+                        style={{
+                            height: "100%",
+                            width: "100%",
+                            borderRadius: "20px",
+                            position: "absolute",
+                        }}
+                        mapStyle="mapbox://styles/tigerwhale/cjpgrt1sccjs92sqjfnuixnxc"
+                    >
+                        {loading && (
+                            <Spin
+                                style={{
+                                    position: "absolute",
+                                    top: "50%",
+                                    left: "50%",
+                                }}
+                            />
+                        )}
+                        {!loading && geoJsons}
+                    </Map>
+                    <div className={styles.creatureOverlay}>
+                        {creatureImage && (
+                            <img src={creatureImage} alt="Creature which was selected" />
+                        )}
+                    </div>
+                    <div className={styles.settingsOverlay}>
+                        <Suspense fallback={<h1>Loading species</h1>}>
+                            <Drawer
+                                title="Results filters"
+                                onClose={() => setDrawerOpen(false)}
+                                open={drawerOpen}
+                                getContainer={false}
+                                mask={false}
+                            >
+                                <Select
+                                    style={{ width: "100%", marginBottom: "20px" }}
+                                    showSearch
+                                    placeholder="Select a species"
+                                    onChange={onCreatureChange}
+                                    filterOption={creatureFilterOption}
+                                    options={creatureOptions}
+                                />
+                                <Select
+                                    style={{ width: "100%", marginBottom: "20px" }}
+                                    defaultValue={{ value: null, label: "All time" }}
+                                    placeholder="Select a time interval"
+                                    onChange={onDateChange}
+                                    options={dateOptions}
+                                />
+                            </Drawer>
+                        </Suspense>
+                        <SettingFilled
+                            style={SettingsIconStyle}
+                            onClick={() => setDrawerOpen(true)}
+                        />
+                    </div>
+                </div>
+            </Col>
+        </Row>
+    );
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchDiveCreatures: (filters) => dispatch(fetchDiveCreatures(filters)),
-    fetchDiveCoords: (filters) => dispatch(fetchDiveCoords(filters)),
-  };
+    return {
+        fetchDiveCreatures: (filters) => dispatch(fetchDiveCreatures(filters)),
+        fetchDiveCoords: (filters) => dispatch(fetchDiveCoords(filters)),
+    };
 };
 
 const mapStateToProps = (state) => {
-  return {
-    creaturesData: state.dive.creaturesData,
-    coordinatesData: state.dive.coordinatesData,
-    loading: state.dive.loading,
-  };
+    return {
+        creaturesData: state.dive.creaturesData,
+        coordinatesData: state.dive.coordinatesData,
+        loading: state.dive.loading,
+    };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ResultsMap);
