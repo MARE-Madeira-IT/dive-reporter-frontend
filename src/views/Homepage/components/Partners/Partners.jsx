@@ -15,6 +15,7 @@ const logoPaths = [
     "madeiraDivePoint",
     "manta",
     "mero",
+    "atlanticDivingCenter"
 ];
 
 function Projects() {
