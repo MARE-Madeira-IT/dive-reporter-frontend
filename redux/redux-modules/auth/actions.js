@@ -43,6 +43,9 @@ export const logout = () => {
     response.then((res) => {
       resetToken();
     });
+    response.catch(() => {
+      resetToken();
+    });
   };
 };
 
