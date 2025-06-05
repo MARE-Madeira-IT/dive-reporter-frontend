@@ -1,24 +1,22 @@
-import axios from "axios";
 import queryString from "query-string";
-
-const url = `${import.meta.env.VITE_API}/api`;
+import axiosConfig from "src/helpers/axiosConfig";
 
 const fetchSelector = (filters = {}) =>
-  axios.get(
-    `${url}/selector/diving-spot?${queryString.stringify(filters, {
+  axiosConfig.get(
+    `/selector/diving-spot?${queryString.stringify(filters, {
       arrayFormat: "index",
     })}`
   );
 
-const createDivingSpot = (data) => axios.post(`${url}/diving-spot`, data);
+const createDivingSpot = (data) => axiosConfig.post(`/diving-spot`, data);
 
-const addToUser = (data) => axios.post(`${url}/diving-spot-user/${data}`);
+const addToUser = (data) => axiosConfig.post(`/diving-spot-user/${data}`);
 
 const removeFromUser = (data) =>
-  axios.post(`${url}/remove-diving-spot-user`, data);
+  axiosConfig.post(`/remove-diving-spot-user`, data);
 
 const fetchSubstrates = () =>
-  axios.get(`${url}/selector/diving-spot-substract`);
+  axiosConfig.get(`/selector/diving-spot-substract`);
 
 const api = {
   fetchSelector,

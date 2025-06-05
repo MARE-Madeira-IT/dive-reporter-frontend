@@ -1,50 +1,48 @@
-import axios from "axios";
 import queryString from "query-string";
-
-const url = `${import.meta.env.VITE_API}/api`;
+import axiosConfig from "src/helpers/axiosConfig";
 
 const fetchMonthlyDives = (filters = { self: false }) =>
-  axios.get(
-    `${url}/dive-monthly?${queryString.stringify(filters, {
+  axiosConfig.get(
+    `/dive-monthly?${queryString.stringify(filters, {
       arrayFormat: "index",
     })}`
   );
 
 const fetchMostReportedSpecies = (filters = {}) =>
-  axios.get(
-    `${url}/dive-most-reported?${queryString.stringify(filters, {
+  axiosConfig.get(
+    `/dive-most-reported?${queryString.stringify(filters, {
       arrayFormat: "index",
     })}`
   );
 
-const fetchRankingDives = () => axios.get(`${url}/dive-ranking`);
+const fetchRankingDives = () => axiosConfig.get(`/dive-ranking`);
 
 const fetchDiveCreatures = (filters = {}) =>
-  axios.get(
-    `${url}/selector/creature?${queryString.stringify(filters, {
+  axiosConfig.get(
+    `/selector/creature?${queryString.stringify(filters, {
       arrayFormat: "index",
     })}`
   );
 
 const fetchDiveCoords = (filters = {}) =>
-  axios.get(
-    `${url}/coordinates/dive?${queryString.stringify(filters, {
+  axiosConfig.get(
+    `/coordinates/dive?${queryString.stringify(filters, {
       arrayFormat: "index",
     })}`
   );
 
 const fetchDive = (page = 1, filters = {}) =>
-  axios.get(
-    `${url}/dive?${queryString.stringify(filters, {
+  axiosConfig.get(
+    `/dive?${queryString.stringify(filters, {
       arrayFormat: "index",
     })}&page=${page}`
   );
 
-const deleteDive = (id) => axios.delete(`${url}/dive/${id}`);
+const deleteDive = (id) => axiosConfig.delete(`/dive/${id}`);
 
 const exportDiveCsv = (filters) =>
-  axios.get(
-    `${url}/export/csv/dive?${queryString.stringify(filters, {
+  axiosConfig.get(
+    `/export/csv/dive?${queryString.stringify(filters, {
       arrayFormat: "index",
     })}`,
     {

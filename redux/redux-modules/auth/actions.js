@@ -1,9 +1,7 @@
 import { types } from "./types";
 import api from "../api/auth";
-import axios from "axios";
 import { jwtDecode } from "jwt-decode";
-
-const url = `${import.meta.env.VITE_API}/api`;
+import axiosConfig from "src/helpers/axiosConfig";
 
 export const createUser = (data) => ({
   type: types.CREATE_USER,
@@ -12,7 +10,7 @@ export const createUser = (data) => ({
 
 export const login = (data) => {
   return (dispatch) => {
-    return axios.post(`${url}/login`, data).then((res) => {
+    return axiosConfig.post(`/login`, data).then((res) => {
       const token = res.data.data.access_token;
       localStorage.setItem("token", token);
       setAuthorizationToken(token);
@@ -23,7 +21,7 @@ export const login = (data) => {
 
 export const me = () => ({
   type: types.ME,
-  payload: axios.get(`${url}/me`),
+  payload: axiosConfig.get(`/me`),
 });
 
 export function loginSuccess(token, user) {
@@ -36,24 +34,20 @@ export function loginSuccess(token, user) {
 
 export const logout = () => {
   return (dispatch) => {
-    const response = dispatch({
+    resetToken();
+
+    dispatch({
       type: types.LOGOUT,
-      payload: axios.get(`${url}/logout`),
-    });
-    response.then((res) => {
-      resetToken();
-    });
-    response.catch(() => {
-      resetToken();
+      payload: axiosConfig.get(`/logout`),
     });
   };
 };
 
 export function refreshAuthorizationToken(token) {
   return (dispatch) => {
-    return axios
+    return axiosConfig
       .get({
-        url: `${url}/refresh`,
+        url: `/refresh`,
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -69,8 +63,8 @@ export function refreshAuthorizationToken(token) {
 }
 export function setAuthorizationToken(token) {
   token
-    ? (axios.defaults.headers.common["Authorization"] = `Bearer ${token}`)
-    : delete axios.defaults.headers.common["Authorization"];
+    ? (axiosConfig.defaults.headers.common["Authorization"] = `Bearer ${token}`)
+    : delete axiosConfig.defaults.headers.common["Authorization"];
 }
 
 export function resetToken() {

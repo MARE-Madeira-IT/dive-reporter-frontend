@@ -23,6 +23,13 @@ export default (state = initialState, action = {}) => {
     case `${types.ME}_REJECTED`:
     case `${types.LOGIN}_REJECTED`:
     case `${types.LOGOUT}_REJECTED`:
+      return {
+        ...state,
+        loading: false,
+        isAuthenticated: false,
+        user: null,
+      };
+
     case `${types.UPDATE_PROFILE_PICTURE}_REJECTED`:
       return {
         ...state,
