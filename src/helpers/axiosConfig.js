@@ -3,7 +3,7 @@ import axios from "axios";
 const axiosConfig = axios.create({
   baseURL: `${import.meta.env.VITE_API}/api`, // Replace with your API base URL
   timeout: 10000, // Request timeout in milliseconds
-  withCredentials: true,
+  withCredentials: false,
   headers: {
     "Content-Type": "application/json", // Set the default content type
     Accept: "application/json", // Set the default content type
